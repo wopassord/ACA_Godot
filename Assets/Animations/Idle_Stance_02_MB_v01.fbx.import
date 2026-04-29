@@ -1,0 +1,90 @@
+[remap]
+
+importer="animation_library"
+importer_version=1
+type="AnimationLibrary"
+uid="uid://baaji1lq2wmpp"
+path="res://.godot/imported/Idle_Stance_02_MB_v01.fbx-0835e84d9cd42cd468ef73d6dced41a7.res"
+
+[deps]
+
+source_file="res://Assets/Animations/Idle_Stance_02_MB_v01.fbx"
+dest_files=["res://.godot/imported/Idle_Stance_02_MB_v01.fbx-0835e84d9cd42cd468ef73d6dced41a7.res"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=true
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"meshes": {
+"MHuman": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+}
+},
+"nodes": {
+"PATH:Camera Switcher": {
+"import/skip_import": true
+},
+"PATH:Producer Back": {
+"import/skip_import": true
+},
+"PATH:Producer Bottom": {
+"import/skip_import": true
+},
+"PATH:Producer Front": {
+"import/skip_import": true
+},
+"PATH:Producer Left": {
+"import/skip_import": true
+},
+"PATH:Producer Perspective": {
+"import/skip_import": true
+},
+"PATH:Producer Right": {
+"import/skip_import": true
+},
+"PATH:Producer Top": {
+"import/skip_import": true
+},
+"PATH:Skeleton3D": {
+"retarget/bone_map": Object(BoneMap,"resource_local_to_scene":false,"resource_name":"","profile":Object(SkeletonProfileHumanoid,"resource_local_to_scene":false,"resource_name":"","root_bone":&"Root","scale_base_bone":&"Hips","group_size":4,"bone_size":56,"script":null)
+,"bonemap":null,"bone_map/Root":&"MHuman_Root","bone_map/Hips":&"MHuman_Spine1","bone_map/Spine":&"MHuman_Spine2","bone_map/Chest":&"MHuman_Spine3","bone_map/UpperChest":&"MHuman_Chest","bone_map/Neck":&"MHuman_Neck","bone_map/Head":&"MHuman_Head","bone_map/LeftEye":&"","bone_map/RightEye":&"","bone_map/Jaw":&"","bone_map/LeftShoulder":&"MHuman_L_Shoulder","bone_map/LeftUpperArm":&"","bone_map/LeftLowerArm":&"MHuman_L_Elbow","bone_map/LeftHand":&"MHuman_L_Wrist","bone_map/LeftThumbMetacarpal":&"MHuman_L_Thumb1","bone_map/LeftThumbProximal":&"MHuman_L_Thumb2","bone_map/LeftThumbDistal":&"MHuman_L_Thumb3","bone_map/LeftIndexProximal":&"MHuman_L_Index1","bone_map/LeftIndexIntermediate":&"MHuman_L_Index2","bone_map/LeftIndexDistal":&"MHuman_L_Index3","bone_map/LeftMiddleProximal":&"MHuman_L_Middle1","bone_map/LeftMiddleIntermediate":&"MHuman_L_Middle2","bone_map/LeftMiddleDistal":&"MHuman_L_Middle3","bone_map/LeftRingProximal":&"MHuman_L_Ring1","bone_map/LeftRingIntermediate":&"MHuman_L_Ring2","bone_map/LeftRingDistal":&"MHuman_L_Ring3","bone_map/LeftLittleProximal":&"MHuman_L_Pinky1","bone_map/LeftLittleIntermediate":&"MHuman_L_Pinky2","bone_map/LeftLittleDistal":&"MHuman_L_Pinky3","bone_map/RightShoulder":&"MHuman_R_Shoulder","bone_map/RightUpperArm":&"","bone_map/RightLowerArm":&"MHuman_R_Elbow","bone_map/RightHand":&"MHuman_R_Wrist","bone_map/RightThumbMetacarpal":&"MHuman_R_Thumb1","bone_map/RightThumbProximal":&"MHuman_R_Thumb2","bone_map/RightThumbDistal":&"MHuman_R_Thumb3","bone_map/RightIndexProximal":&"MHuman_R_Index1","bone_map/RightIndexIntermediate":&"MHuman_R_Index2","bone_map/RightIndexDistal":&"MHuman_R_Index3","bone_map/RightMiddleProximal":&"MHuman_R_Middle1","bone_map/RightMiddleIntermediate":&"MHuman_R_Middle2","bone_map/RightMiddleDistal":&"MHuman_R_Middle3","bone_map/RightRingProximal":&"MHuman_R_Ring1","bone_map/RightRingIntermediate":&"MHuman_R_Ring2","bone_map/RightRingDistal":&"MHuman_R_Ring3","bone_map/RightLittleProximal":&"MHuman_R_Pinky1","bone_map/RightLittleIntermediate":&"MHuman_R_Pinky2","bone_map/RightLittleDistal":&"MHuman_R_Pinky3","bone_map/LeftUpperLeg":&"","bone_map/LeftLowerLeg":&"","bone_map/LeftFoot":&"","bone_map/LeftToes":&"","bone_map/RightUpperLeg":&"","bone_map/RightLowerLeg":&"","bone_map/RightFoot":&"","bone_map/RightToes":&"","script":null)
+
+},
+"PATH:Skeleton3D/MHuman": {
+"import/skip_import": true
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
+fbx/naming_version=2

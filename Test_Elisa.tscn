@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://b5mddb0rxn6f"]
+
+[ext_resource type="PackedScene" uid="uid://daftj8pyi78gv" path="res://Assets/Characters/Elisa/Elisa_Unity.fbx" id="1_f2yey"]
+[ext_resource type="AnimationLibrary" uid="uid://cd1mjbejxcjyw" path="res://Assets/Animations/Idle_Stance_01_MB_v01.fbx" id="2_o3sad"]
+[ext_resource type="AnimationLibrary" uid="uid://baaji1lq2wmpp" path="res://Assets/Animations/Idle_Stance_02_MB_v01.fbx" id="3_auycd"]
+[ext_resource type="AnimationLibrary" uid="uid://c61etrm5uhxi2" path="res://Assets/Animations/Waving.fbx" id="4_67p8g"]
+[ext_resource type="AnimationLibrary" uid="uid://bkdufib8ekbm5" path="res://Assets/Animations/dismissing.fbx" id="5_jgewd"]
+[ext_resource type="AnimationLibrary" uid="uid://cwua5yxk5yshc" path="res://Assets/Animations/idle.blend" id="6_afv82"]
+[ext_resource type="AnimationLibrary" uid="uid://b0827wsevehtf" path="res://Assets/Animations/idle1.blend" id="7_he6w4"]
+[ext_resource type="AnimationLibrary" uid="uid://bc5g76kfxerhu" path="res://Assets/Animations/idle2.fbx" id="8_u0oex"]
+[ext_resource type="AnimationLibrary" uid="uid://beo64nfft75bj" path="res://Assets/Animations/poser.blend" id="9_ljaqq"]
+[ext_resource type="AnimationLibrary" uid="uid://ctd6vttei80xm" path="res://Assets/Animations/sindiquer.blend" id="10_2isq3"]
+[ext_resource type="AnimationLibrary" uid="uid://dvbx1i8bc0780" path="res://Assets/Animations/tous.blend" id="11_ul0b1"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_pqbqt"]
+
+[sub_resource type="Sky" id="Sky_ex3tn"]
+sky_material = SubResource("PhysicalSkyMaterial_pqbqt")
+
+[sub_resource type="Environment" id="Environment_l3xht"]
+background_mode = 2
+sky = SubResource("Sky_ex3tn")
+ambient_light_source = 3
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1qy40"]
+
+[node name="Node3D" type="Node3D" unique_id=508398552]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=935238536]
+environment = SubResource("Environment_l3xht")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1139948180]
+transform = Transform3D(0.9999845, -2.0697213e-05, 0.005567533, -0.0055675716, -0.0037174004, 0.9999776, 0, -0.9999931, -0.0037174579, 0, 0, 0)
+
+[node name="Elisa_Unity" parent="." unique_id=2076758102 instance=ExtResource("1_f2yey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027485073, -1.1920929e-07, 1.3492867)
+
+[node name="GeneralSkeleton" parent="Elisa_Unity" index="0" unique_id=1538808997]
+bones/16/position = Vector3(-0.0084294, 0.91445875, 0.019798413)
+bones/16/rotation = Quaternion(0.019341107, -0.039191656, -0.0061943685, 0.99902534)
+bones/17/position = Vector3(0.019019509, 0.84574735, -0.008223358)
+bones/17/rotation = Quaternion(0.028501937, -0.9967583, 0.018113328, 0.07302531)
+bones/18/rotation = Quaternion(-0.1172751, 0.027428096, 0.047538146, 0.9915818)
+bones/19/rotation = Quaternion(0.047761265, 0.027606182, -0.030251302, 0.9980189)
+bones/20/rotation = Quaternion(0.01236777, 0.0006367738, 0.0029747686, 0.99991894)
+bones/21/rotation = Quaternion(0.10499082, 0.023420628, 0.0042467997, 0.9941883)
+bones/22/rotation = Quaternion(-0.0066982573, 0.022669898, -0.011168951, 0.9996582)
+bones/26/rotation = Quaternion(0.53069943, -0.26103446, -0.50779974, -0.6263854)
+bones/27/rotation = Quaternion(-0.3154152, 0.8275531, -0.40431735, 0.22846627)
+bones/28/rotation = Quaternion(0.12717551, 0.75382257, -0.09072892, 0.63823676)
+bones/29/rotation = Quaternion(0.022935068, -0.64394456, -0.079699926, 0.76056397)
+bones/31/rotation = Quaternion(-0.24012706, -0.7526864, -0.12423979, 0.6003055)
+bones/32/rotation = Quaternion(0.090395465, -0.08755636, 0.011164813, 0.9919869)
+bones/33/rotation = Quaternion(0.18106955, -0.043376725, -0.09327508, 0.97807574)
+bones/35/rotation = Quaternion(0.094737306, 0.004976392, 0.027843952, 0.9951004)
+bones/36/rotation = Quaternion(0.2001571, 0.0015319886, 0.027017508, 0.97939014)
+bones/37/rotation = Quaternion(0.12386441, 0.00015240908, 0.013378918, 0.99220896)
+bones/39/rotation = Quaternion(0.13020867, 0.003667891, 0.06010866, 0.9896561)
+bones/40/rotation = Quaternion(0.20470925, -0.0014117956, 0.023213446, 0.9785465)
+bones/41/rotation = Quaternion(0.097996056, 0.0009531678, -0.006359727, 0.99516606)
+bones/43/rotation = Quaternion(0.16983113, 0.009009749, 0.08325514, 0.9819088)
+bones/44/rotation = Quaternion(0.1993499, 0.0013970137, 0.018389523, 0.97975487)
+bones/45/rotation = Quaternion(0.16798557, 0.005994917, -0.0016925337, 0.98576987)
+bones/47/rotation = Quaternion(0.038330406, -0.004355043, -0.0306333, 0.998786)
+bones/48/rotation = Quaternion(0.1466734, 0.0008561611, 0.021603525, 0.9889487)
+bones/49/rotation = Quaternion(0.056938194, 0.0012262167, -0.004880816, 0.9983651)
+bones/51/rotation = Quaternion(0.33836377, 0.47624385, 0.6483823, -0.48816195)
+bones/52/rotation = Quaternion(0.29469016, 0.78652406, -0.5137474, -0.17493245)
+bones/53/rotation = Quaternion(0.033750527, -0.76346564, 0.12069383, 0.6335725)
+bones/54/rotation = Quaternion(0.09694219, 0.6355843, -0.0068824114, 0.76589)
+bones/56/rotation = Quaternion(-0.21812592, 0.79229206, 0.13257901, 0.5541817)
+bones/57/rotation = Quaternion(0.11994624, 0.10366543, 0.022312764, 0.98710114)
+bones/58/rotation = Quaternion(0.14596945, 0.10616523, -0.004395634, 0.9835662)
+bones/60/rotation = Quaternion(0.11973883, -0.0020188096, -0.07593305, 0.9898954)
+bones/61/rotation = Quaternion(0.22952162, -0.0018014312, -0.029905558, 0.97284234)
+bones/62/rotation = Quaternion(0.12656936, 0.00010156633, -0.01499057, 0.99184453)
+bones/64/rotation = Quaternion(0.17226247, -0.0003131926, -0.10662916, 0.9792629)
+bones/65/rotation = Quaternion(0.19779353, 0.0013647825, -0.022534966, 0.9799837)
+bones/66/rotation = Quaternion(0.16966899, 0.0020131469, -0.016681492, 0.98535794)
+bones/68/rotation = Quaternion(0.16452624, -0.01773304, -0.12502994, 0.97825575)
+bones/69/rotation = Quaternion(0.19755566, -0.0013872385, -0.018226027, 0.98012125)
+bones/70/rotation = Quaternion(0.14364164, -0.00022220612, -0.021780252, 0.9893901)
+bones/72/rotation = Quaternion(0.066041976, 0.0004889667, -0.024599642, 0.9975135)
+bones/73/rotation = Quaternion(0.21981907, -0.001363337, -0.02887988, 0.9751122)
+bones/74/rotation = Quaternion(0.11806251, -0.00038477778, -0.010058194, 0.99295515)
+bones/76/rotation = Quaternion(-0.014886224, -0.05482792, 0.9978959, 0.031242242)
+bones/77/rotation = Quaternion(-0.056610484, 0.9977227, 0.028156633, 0.02349397)
+bones/78/rotation = Quaternion(-0.16182448, 0.65067685, -0.720189, -0.17821445)
+bones/80/rotation = Quaternion(-0.0014264015, 0.9999938, 0.003222704, -0.00041313044)
+bones/81/rotation = Quaternion(0.04619322, -0.024326818, 0.9964859, -0.0655)
+bones/82/rotation = Quaternion(0.03666907, 0.99521327, 0.025281487, 0.086987436)
+bones/83/rotation = Quaternion(-0.10302705, 0.68464166, -0.7131751, -0.10969264)
+bones/85/rotation = Quaternion(-0.0076335426, 0.99996006, 0.0046347086, -0.000546014)
+
+[node name="H_DDS_HighRes" parent="Elisa_Unity/GeneralSkeleton" index="8" unique_id=1456514385]
+blend_shapes/h_expressions.AE_AA_h = 0.56818
+blend_shapes/h_expressions.AO_a_h = -0.35227
+blend_shapes/h_expressions.Ax_E_h = -0.23864
+blend_shapes/h_expressions.TD_I_h = -0.03421
+blend_shapes/h_expressions.UH_OO_h = -1.0
+blend_shapes/h_expressions.H_EST_h = 0.83421
+blend_shapes/h_expressions.JawCompress_h = -0.06053
+blend_shapes/h_expressions.Ljaw_h = 0.05
+blend_shapes/h_expressions.JawFront_h = 0.24474
+blend_shapes/h_expressions.Chew_h = -0.01842
+blend_shapes/h_expressions.MouthOpen_h = 1.0
+blend_shapes/h_expressions.Shout_h = 1.0
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Elisa_Unity" unique_id=1000335420]
+libraries/Animations1 = SubResource("AnimationLibrary_1qy40")
+libraries/Idle_Stance_01_MB_v01 = ExtResource("2_o3sad")
+libraries/Idle_Stance_02_MB_v01 = ExtResource("3_auycd")
+libraries/Waving = ExtResource("4_67p8g")
+libraries/dismissing = ExtResource("5_jgewd")
+libraries/idle = ExtResource("6_afv82")
+libraries/idle1 = ExtResource("7_he6w4")
+libraries/idle2 = ExtResource("8_u0oex")
+libraries/poser = ExtResource("9_ljaqq")
+libraries/sindiquer = ExtResource("10_2isq3")
+libraries/tous = ExtResource("11_ul0b1")
+
+[editable path="Elisa_Unity"]
