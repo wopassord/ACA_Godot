@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b5mddb0rxn6f"]
 
 [ext_resource type="PackedScene" uid="uid://daftj8pyi78gv" path="res://Assets/Characters/Elisa/Elisa_Unity.fbx" id="1_f2yey"]
+[ext_resource type="Script" uid="uid://bhvmpef5p7bo8" path="res://Scripts/GodotAnimationEngine.cs" id="2_auycd"]
 [ext_resource type="AnimationLibrary" uid="uid://cd1mjbejxcjyw" path="res://Assets/Animations/Idle_Stance_01_MB_v01.fbx" id="2_o3sad"]
 [ext_resource type="AnimationLibrary" uid="uid://baaji1lq2wmpp" path="res://Assets/Animations/Idle_Stance_02_MB_v01.fbx" id="3_auycd"]
 [ext_resource type="AnimationLibrary" uid="uid://c61etrm5uhxi2" path="res://Assets/Animations/Waving.fbx" id="4_67p8g"]
@@ -32,8 +33,10 @@ environment = SubResource("Environment_l3xht")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1139948180]
 transform = Transform3D(0.9999845, -2.0697213e-05, 0.005567533, -0.0055675716, -0.0037174004, 0.9999776, 0, -0.9999931, -0.0037174579, 0, 0, 0)
 
-[node name="Elisa_Unity" parent="." unique_id=2076758102 instance=ExtResource("1_f2yey")]
+[node name="Elisa_Unity" parent="." unique_id=2076758102 node_paths=PackedStringArray("faceMesh") instance=ExtResource("1_f2yey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027485073, -1.1920929e-07, 1.3492867)
+script = ExtResource("2_auycd")
+faceMesh = NodePath("GeneralSkeleton/H_DDS_HighRes")
 
 [node name="GeneralSkeleton" parent="Elisa_Unity" index="0" unique_id=1538808997]
 bones/16/position = Vector3(-0.0084294, 0.91445875, 0.019798413)
@@ -93,18 +96,7 @@ bones/83/rotation = Quaternion(-0.10302705, 0.68464166, -0.7131751, -0.10969264)
 bones/85/rotation = Quaternion(-0.0076335426, 0.99996006, 0.0046347086, -0.000546014)
 
 [node name="H_DDS_HighRes" parent="Elisa_Unity/GeneralSkeleton" index="8" unique_id=1456514385]
-blend_shapes/h_expressions.AE_AA_h = 0.56818
-blend_shapes/h_expressions.AO_a_h = -0.35227
-blend_shapes/h_expressions.Ax_E_h = -0.23864
-blend_shapes/h_expressions.TD_I_h = -0.03421
-blend_shapes/h_expressions.UH_OO_h = -1.0
-blend_shapes/h_expressions.H_EST_h = 0.83421
-blend_shapes/h_expressions.JawCompress_h = -0.06053
-blend_shapes/h_expressions.Ljaw_h = 0.05
-blend_shapes/h_expressions.JawFront_h = 0.24474
-blend_shapes/h_expressions.Chew_h = -0.01842
-blend_shapes/h_expressions.MouthOpen_h = 1.0
-blend_shapes/h_expressions.Shout_h = 1.0
+blend_shapes/h_expressions.ReyeOpen_h = 1.0
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Elisa_Unity" unique_id=1000335420]
 libraries/Animations1 = SubResource("AnimationLibrary_1qy40")
@@ -118,5 +110,8 @@ libraries/idle2 = ExtResource("8_u0oex")
 libraries/poser = ExtResource("9_ljaqq")
 libraries/sindiquer = ExtResource("10_2isq3")
 libraries/tous = ExtResource("11_ul0b1")
+
+[node name="Camera3D" type="Camera3D" parent="Elisa_Unity" unique_id=1138542113]
+transform = Transform3D(-0.9999765, 0, -0.006859162, 0, 1, 0, 0.006859162, 0, -0.9999765, 0, 2.33315, -0.2623086)
 
 [editable path="Elisa_Unity"]

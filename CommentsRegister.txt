@@ -1,0 +1,26 @@
+THIS TXT CONTAIN EVERYTHING THAT WAS COMMENTED THROUGHOUT THE CODES AND SHOULD BE DECOMMENTED EVENTUALLY
+
+Face Engine:
+
+    - Everything Head related
+    - This voice blocks near public void PlaySpeech:
+
+    ////////// VOICE COMMENTED FOR THIS INSTANCE (FOCUS ON BLENDSHAPES)
+            // //start playing
+            // agent_.animationEngine.PlayVoice(sdata);
+        }
+///////////// InterruptSpeech() COMMENTED FOR THIS INSTANCE (FOCUS ON BLENDSHAPES)
+        // public void InterruptSpeech()
+        // {
+        //     //stop playing
+        //     speechActions_.Clear();
+        //     agent_.animationEngine.StopVoice();
+        //     //agent_.audioS.Stop();
+        //     //agent_.audioS.clip.UnloadAudioData();
+
+        //     //TODO : reset lips blendshapes for visemes
+        //     //ResetBlendshapesDictionaries(); //this cleans all blendshapes, just the visemes should be reset
+        // }
+
+        //////////COMMENTED FOR THIS INSTANCE (FOCUS ON BLENDSHAPES)
+                // InterruptSpeech();
