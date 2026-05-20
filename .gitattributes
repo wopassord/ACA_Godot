@@ -7,11 +7,16 @@
 *.json text eol=lf
 *.md text eol=lf
 *.txt text eol=lf
+Assets/StreamingAssets/cereproc/voices_48k/cerevoice_Sarah_48k_standard.voice filter=lfs diff=lfs merge=lfs -text
 *.gltf text eol=lf
 .gitattributes text eol=lf
 .gitignore text eol=lf
-
-
-# We maintain the crlf for visual studio / C# files
-*.sln text eol=crlf
-*.csproj text eol=crlf
+*.xml text eol=lf
+*.png binary
+*.fbx binary
+*.blend binary
+*.dll binary
+*.exe binary
+*.so binary
+*.sln text eol=lf
+*.csproj text eol=lf

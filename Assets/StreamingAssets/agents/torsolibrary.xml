@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Torsos>
+
+	<Torso name="leaning">
+		<Position side="BOTH" height="NORMAL" radialOrientation="NORMAL" distance="FORWARD"/>
+	</Torso>
+	
+	<Torso name="leaningLeft">
+		<Position side="LEFT" height="NORMAL" radialOrientation="NORMAL" distance="FORWARD"/>
+	</Torso>
+	
+	<Torso name="leaningRight">
+		<Position side="RIGHT" height="NORMAL" radialOrientation="NORMAL" distance="FORWARD"/>
+	</Torso>
+	
+	<Torso name="recline">
+		<Position side="BOTH" height="NORMAL" radialOrientation="NORMAL" distance="BACKWARD"/>
+	</Torso>
+	
+	<Torso name="reclineLeft">
+		<Position side="LEFT" height="NORMAL" radialOrientation="NORMAL" distance="BACKWARD"/>
+	</Torso>
+	
+	<Torso name="reclineRight">
+		<Position side="RIGHT" height="NORMAL" radialOrientation="NORMAL" distance="BACKWARD"/>
+	</Torso>
+	
+</Torsos>

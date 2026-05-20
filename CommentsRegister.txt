@@ -24,3 +24,17 @@ Face Engine:
 
         //////////COMMENTED FOR THIS INSTANCE (FOCUS ON BLENDSHAPES)
                 // InterruptSpeech();
+
+
+IAnimationEngine:
+
+        - Original methods that are commented to implement the contract step by step
+
+
+Reactive Behavior:
+
+        - Empty class and function. One should implement them eventually.
+
+TTS:
+
+        - Dummy version implemented. Eventually we'll implement Josiane's code here

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:ext="http://www.bml-initiative.org/bml/coreextensions-1.0" id="bml9" characterId="Assistant" composition="APPEND">
+<!--  <speech id="s0" start="0" >
+    <description priority = "2" type="application/ssml+xml">
+      <speak>
+        <mark name="nod0"/> <mark name="raise_brows0"/> , <spurt audio="g0001_014"> hmm </spurt>.
+        Mmmm. nous disposons de 6 A-AMS 250 kilo et 4 mica
+      </speak>
+    </description>
+  </speech>
+  <gaze id="g00" start="s0:start" end="s0:end+0.5" target="User"/>
+  <head id="he00" lexeme="nod" start="s0:nod0" end="start+1" />
+  
+  <faceLexeme id="fa00" lexeme="raise_brows" start="s0:raise_brows0" end="start+1" />
+  <gesture id="face" lexeme="wipe" mode="BOTH_HANDS" amount = "0.5" start="0" end="1"/>
+<faceLexeme id="fa00" lexeme="happiness" start="0" end="4" />
+  
+  
+  <face id="f1" amount="0.8" start="5" end="10">
+    <ext:facs au="12" side="BOTH"/>
+  </face> 
+<gazedirectionshift id="g1" start="0" end="6" target="User"/>
+  <gaze id="g2" start="2" end="5" target="Sphere1"/>
+  <gazedirectionshift id="g5" start="4.5" end="11" target="SITAC"/>
+ <gaze id="g3" start="4" end="10" target="User"/>
+  <gaze id="g4" start="7" end="9" target="SITAC"/>
+  <face id="f1" amount="0.8" start="2.5" end="5">
+    <ext:facs au="12" side="BOTH"/>
+  </face>
+ -->
+  <gazedirectionshift id="g1" start="0" target="targ"/>
+  <gazedirectionshift id="g4" start="2" target="User"/>
+  <gazedirectionshift id="g6" start="4" target="none"/>
+</bml>
+  
+    
+
+ 

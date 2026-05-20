@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:ext="http://www.bml-initiative.org/bml/coreextensions-1.0"
+id="bml3" characterId="Lisa" composition="MERGE">
+
+<!--  <gazedirectionshift id="g6" start="16"/>
+  
+  <posture id="pos1" start="1" end="8">
+    <stance type="AKIMBO"/>
+    <target name="User" facing="FRONT"/>
+  </posture>
+
+  <posture id="pos2" start="7" end="12">
+    <stance type="ARMCROSSED"/>
+    <target name="User" facing="FRONT"/>
+  </posture>
+
+   <torso id="t1" lexeme="LEANING" start="1" end="2"/>
+
+  <pointing id="po1" target="Sphere1" mode="LEFT_HAND" stroke="s1:tm1"/>
+  <pointing id="po2" target="Sphere" mode="LEFT_HAND" stroke="s2:tm4"/>
+
+  -->
+  
+
+
+
+  
+  
+  <speech id="s1" start="1">
+    <description priority="2" type="application/ssml+xml">
+      <speak>
+          <prosody volume="x-soft" rate="x-slow" range="x-low">
+            je parle doucement !
+          </prosody>
+          <prosody volume="x-loud" rate="x-fast" range="x-high">
+            Je parle bien plus fort !
+          </prosody>
+      </speak>
+    </description>
+  </speech>
+
+  <!--
+    <gesture id="ge0" lexeme="hello" mode="RIGHT_HAND" stroke="s1:tm1"/>
+  <face id="f1" amount="0.8" start="s1:start" end="s1:tm1">
+    <ext:facs au="12" side="BOTH"/>
+  </face>
+
+  <gesture id="ge1" lexeme="me" mode="RIGHT_HAND" stroke="s1:tm2"/>
+
+  <head id="h4" lexeme="NOD" start="s1:tm1+0.5" end="start+1"/>
+
+  <gaze id="g1" target="User"/>
+  <pointing id="po1" target="Sphere1" mode="LEFT_HAND" stroke="s1:tm2"/>
+
+
+  -->  
+
+  
+ 
+  
+<!--<gaze id="g1" start="0.2" end="1.5" target="Main Camera"/> 
+  <gesture id="ge1" lexeme="hello" mode="LEFT_HAND" stroke="s1:tm1"/>
+<pointing id="p1" start="0.2" end="1.5" target ="Sphere1" mode="LEFT_HAND"/>-->
+
+<!--  <gesture id="ge2" lexeme="open" mode="LEFT_HAND" stroke="s1:tm1"/>
+  <gesture id="ge1" lexeme="testnewGesture" mode="LEFT_HAND" start="s1:tm1" end="s1:tm1+10"/>
+  <gesture id="ge0" lexeme="gesture:test" mode="LEFT_HAND" start="s1:tm1+5" end="s1:tm1+8"/>
+  
+  
+      <gesture id="ge3" lexeme="open" mode="BOTH_HANDS" stroke="s2:tm2"/>
+  <gesture id="ge1" lexeme="gesture:pulpL:Sphere1" mode="LEFT_HAND" start="s2:tm3+1" end="s2:tm4+1"/>
+  
+
+  
+  <speech id="s2" start="s1:end+1">
+    <description priority="2" type="application/ssml+xml">
+      <speak>
+        <mark name="tm1"/> Alons <mark name="tm2"/> à la piscine <mark name="tm3"/>! Cela te dit <mark name="tm4"/>?
+      </speak>
+    </description>
+  </speech>
+  
+   <gesture id="ge2" lexeme="handDown" stroke="s2:tm2"/>
+  <gesture id="ge3" lexeme="wipe" stroke="s2:tm4"/>
+  <head id="h5" lexeme="NOD" start="ge3:stroke" end="start+1"/>-->
+  
+  <!-- <gesture id="ge4" lexeme="openOne2" start="s2:tm3+3" end="s2:tm3+5"/>-->
+<!--  <gesture id="ge5" lexeme="gesture:pulpL:zone1" mode="LEFT_HAND" start="s2:tm3+6" end="s2:tm3+10"/>  
+  <gesture id="ge6" lexeme="gesture:pulpR:zone1" mode="RIGHT_HAND" start="s2:tm3+6" end="s2:tm3+10"/>  -->
+
+   <!--<gesture id="ge5" lexeme="gesture:pulpL:zone1" start="s2:tm3+6" end="s2:tm3+10"/>  
+  <gesture id="ge6" lexeme="gesture:pulpR:zone1" start="s2:tm3+6" end="s2:tm3+10"/> 
+ <gesture id="ge4" lexeme="gesture:zone1:pulpL" start="s2:tm3+3" end="s2:tm3+15"/> 
+   	<gesture id="ge5" lexeme="gesture:zone1:pulpR" start="s2:tm3+3" end="s2:tm3+15"/>-->
+  
+   <!-- <locomotion id="l1" target="AUDIENCE" manner="WALK" start="ge1:end"/>
+  -->
+</bml>

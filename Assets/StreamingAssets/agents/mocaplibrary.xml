@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mocaps>
+	<mocap lexeme="waving" clipname="waving" posture="false" side="RIGHT" duration="1.333" stroke="0.75" />
+	<mocap lexeme="dismissing" clipname="dismissing" posture="false" side="RIGHT" duration="1.66" stroke="0.9" stroke_start="0.66" stroke_end="1.13" />
+	<mocap lexeme="thankful" clipname="thankful" posture="false" side="RIGHT" duration="2.3" stroke="0.28" />
+	<mocap lexeme="sitting" clipname="sitting" posture="true" side="BOTH" duration="1.66" stroke="0.9" stroke_start="0.66" stroke_end="1.13" />
+</mocaps>

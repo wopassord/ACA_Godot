@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blendshapelibrary>
+	<!-- Visemes -->
+	<action name="sil">
+        <blendshape code="0" type="JAW" weight="0"/>
+    </action>
+    <action name="aa">
+        <blendshape code="0" type="LIP" weight="70"/>
+        <blendshape code="12" type="JAW" weight="70"/>
+    </action>
+	<action name="a">
+        <blendshape code="1" type="LIP" weight="70"/>
+        <blendshape code="13" type="JAW" weight="70"/>
+    </action>
+	<action name="ai">
+        <blendshape code="3" type="LIP" weight="70"/>
+        <blendshape code="15" type="JAW" weight="70"/>
+    </action>
+	<action name="an">
+        <blendshape code="1" type="LIP" weight="70"/>
+        <blendshape code="13" type="JAW" weight="70"/>
+    </action>
+	<action name="au">
+        <blendshape code="2" type="LIP" weight="70"/>
+        <blendshape code="13" type="JAW" weight="70"/>
+    </action>
+	<action name="b">
+        <blendshape code="10" type="LIP" weight="70"/>
+		<blendshape code="11" type="LIP" weight="70"/>
+        <blendshape code="21" type="JAW" weight="70"/>
+    </action>
+	<action name="ch">
+        <blendshape code="9" type="LIP" weight="70"/>
+        <blendshape code="21" type="JAW" weight="70"/>
+    </action>
+	<action name="sh">
+        <blendshape code="9" type="LIP" weight="70"/>
+        <blendshape code="21" type="JAW" weight="70"/>
+    </action>
+	<action name="d">
+        <blendshape code="3" type="LIP" weight="70"/>
+        <blendshape code="15" type="JAW" weight="70"/>
+    </action>
+	<action name="dh">
+        <blendshape code="3" type="LIP" weight="70"/>
+        <blendshape code="15" type="JAW" weight="70"/>
+    </action>
+	<action name="@">
+        <blendshape code="8" type="LIP" weight="70"/>
+        <blendshape code="20" type="JAW" weight="70"/>
+    </action>
+	<action name="ee">
+        <blendshape code="6" type="LIP" weight="70"/>
+        <blendshape code="18" type="JAW" weight="70"/>
+    </action>
+	<action name="e@">
+        <blendshape code="6" type="LIP" weight="70"/>
+        <blendshape code="18" type="JAW" weight="70"/>
+    </action>
+	<action name="e">
+        <blendshape code="6" type="LIP" weight="70"/>
+        <blendshape code="18" type="JAW" weight="70"/>
+    </action>
+	<action name="ei">
+        <blendshape code="6" type="LIP" weight="70"/>
+		<blendshape code="3" type="LIP" weight="70"/>
+        <blendshape code="15" type="JAW" weight="70"/>
+    </action>
+	<action name="ex">
+        <blendshape code="2" type="LIP" weight="70"/>
+        <blendshape code="14" type="JAW" weight="70"/>
+    </action>
+	<action name="ex1">
+        <blendshape code="10" type="LIP" weight="30"/>
+		<blendshape code="11" type="LIP" weight="30"/>
+    </action>
+	<action name="f">
+        <blendshape code="7" type="LIP" weight="70"/>
+        <blendshape code="19" type="JAW" weight="70"/>
+    </action>
+	<action name="g">
+        <blendshape code="12" type="LIP" weight="70"/>
+        <blendshape code="23" type="JAW" weight="70"/>
+    </action>
+	<action name="h">
+        <blendshape code="6" type="LIP" weight="70"/>
+        <blendshape code="18" type="JAW" weight="70"/>
+    </action>
+	<action name="i">
+        <blendshape code="3" type="LIP" weight="70"/>
+        <blendshape code="15" type="JAW" weight="70"/>
+    </action>
+	<action name="i@">
+        <blendshape code="3" type="LIP" weight="70"/>
+        <blendshape code="15" type="JAW" weight="70"/>
+    </action>
+	<action name="ii">
+        <blendshape code="3" type="LIP" weight="70"/>
+        <blendshape code="15" type="JAW" weight="70"/>
+    </action>
+	<action name="in">
+        <blendshape code="0" type="LIP" weight="70"/>
+        <blendshape code="12" type="JAW" weight="70"/>
+    </action>
+	<action name="zh">
+        <blendshape code="9" type="LIP" weight="70"/>
+        <blendshape code="21" type="JAW" weight="70"/>
+    </action>
+	<action name="jh">
+        <blendshape code="9" type="LIP" weight="70"/>
+        <blendshape code="21" type="JAW" weight="70"/>
+    </action>
+	<action name="k">
+        <blendshape code="12" type="LIP" weight="70"/>
+        <blendshape code="23" type="JAW" weight="70"/>
+    </action>
+	<action name="l">
+        <blendshape code="12" type="LIP" weight="70"/>
+		<blendshape code="11" type="TONGUE" weight="70"/>
+        <blendshape code="23" type="JAW" weight="70"/>
+    </action>
+	<action name="m">
+        <blendshape code="10" type="LIP" weight="70"/>
+		<blendshape code="11" type="LIP" weight="70"/>
+        <blendshape code="21" type="JAW" weight="70"/>
+    </action>
+	<action name="n">
+        <blendshape code="12" type="LIP" weight="70"/>
+		<blendshape code="1" type="TONGUE" weight="70"/>
+        <blendshape code="23" type="JAW" weight="70"/>
+    </action>
+	<action name="ng">
+        <blendshape code="12" type="LIP" weight="70"/>
+		<blendshape code="1" type="TONGUE" weight="70"/>
+        <blendshape code="23" type="JAW" weight="70"/>
+    </action>
+	<action name="ny">
+        <blendshape code="12" type="LIP" weight="70"/>
+		<blendshape code="1" type="TONGUE" weight="70"/>
+        <blendshape code="20" type="JAW" weight="70"/>
+    </action>
+	<action name="oi">
+        <blendshape code="2" type="LIP" weight="70"/>
+        <blendshape code="14" type="JAW" weight="70"/>
+    </action>
+	<action name="@@">
+        <blendshape code="2" type="LIP" weight="70"/>
+        <blendshape code="14" type="JAW" weight="70"/>
+    </action>
+	<action name="on">
+        <blendshape code="12" type="LIP" weight="70"/>
+        <blendshape code="23" type="JAW" weight="70"/>
+    </action>
+	<action name="on1">
+        <blendshape code="10" type="LIP" weight="30"/>
+		<blendshape code="11" type="LIP" weight="30"/>
+    </action>
+	<action name="oo">
+        <blendshape code="4" type="LIP" weight="70"/>
+        <blendshape code="16" type="JAW" weight="70"/>
+    </action>
+	<action name="ou">
+        <blendshape code="4" type="LIP" weight="70"/>
+        <blendshape code="16" type="JAW" weight="70"/>
+    </action>
+	<action name="u">
+        <blendshape code="5" type="LIP" weight="70"/>
+        <blendshape code="7" type="JAW" weight="70"/>
+    </action>
+	<action name="o">
+        <blendshape code="4" type="LIP" weight="70"/>
+        <blendshape code="16" type="JAW" weight="70"/>
+    </action>
+	<action name="p">
+        <blendshape code="10" type="LIP" weight="70"/>
+		<blendshape code="11" type="LIP" weight="70"/>
+        <blendshape code="22" type="JAW" weight="70"/>
+    </action>
+	<action name="r">
+        <blendshape code="12" type="LIP" weight="70"/>
+		<blendshape code="10" type="TONGUE" weight="70"/>
+        <blendshape code="23" type="JAW" weight="70"/>
+    </action>
+	<action name="rr">
+        <blendshape code="12" type="LIP" weight="70"/>
+		<blendshape code="10" type="TONGUE" weight="70"/>
+        <blendshape code="23" type="JAW" weight="70"/>
+    </action>
+	<action name="s">
+        <blendshape code="8" type="LIP" weight="70"/>
+        <blendshape code="20" type="JAW" weight="70"/>
+    </action>
+	<action name="t">
+        <blendshape code="3" type="LIP" weight="70"/>
+        <blendshape code="15" type="JAW" weight="70"/>
+    </action>
+	<action name="th">
+        <blendshape code="3" type="LIP" weight="70"/>
+		<blendshape code="0" type="TONGUE" weight="70"/>
+        <blendshape code="15" type="JAW" weight="70"/>
+    </action>
+	<action name="u@">
+        <blendshape code="5" type="LIP" weight="70"/>
+        <blendshape code="17" type="JAW" weight="70"/>
+    </action>
+	<action name="uh">
+        <blendshape code="4" type="LIP" weight="70"/>
+        <blendshape code="16" type="JAW" weight="70"/>
+    </action>
+	<action name="un">
+        <blendshape code="0" type="LIP" weight="70"/>
+        <blendshape code="12" type="JAW" weight="70"/>
+    </action>
+	<action name="uu">
+        <blendshape code="4" type="LIP" weight="70"/>
+        <blendshape code="16" type="JAW" weight="70"/>
+    </action>
+	<action name="yy">
+        <blendshape code="5" type="LIP" weight="70"/>
+        <blendshape code="17" type="JAW" weight="70"/>
+	</action>
+	<action name="uy">
+        <blendshape code="5" type="LIP" weight="70"/>
+        <blendshape code="17" type="JAW" weight="70"/>
+    </action>
+	<action name="v">
+        <blendshape code="7" type="LIP" weight="70"/>
+        <blendshape code="19" type="JAW" weight="70"/>
+    </action>
+	<action name="w">
+        <blendshape code="5" type="LIP" weight="70"/>
+        <blendshape code="17" type="JAW" weight="70"/>
+    </action>
+	<action name="y">
+        <blendshape code="3" type="LIP" weight="70"/>
+        <blendshape code="15" type="JAW" weight="70"/>
+    </action>
+	<action name="z">
+        <blendshape code="8" type="LIP" weight="70"/>
+        <blendshape code="20" type="JAW" weight="70"/>
+    </action>
+	<action name="wa">
+        <blendshape code="5" type="LIP" weight="70" anticipated_end="0.5"/>
+        <blendshape code="17" type="JAW" weight="70" anticipated_end="0.5"/>
+		<blendshape code="1" type="LIP" weight="70" delayed_start="0.5"/>
+        <blendshape code="13" type="JAW" weight="70" delayed_start="0.5"/>
+    </action>
+	<action name="wi">
+        <blendshape code="5" type="LIP" weight="70" anticipated_end="0.5"/>
+        <blendshape code="17" type="JAW" weight="70" anticipated_end="0.5"/>
+		<blendshape code="3" type="LIP" weight="70" delayed_start="0.5"/>
+        <blendshape code="15" type="JAW" weight="70" delayed_start="0.5"/>
+    </action>
+	<action name="yn">
+        <blendshape code="3" type="LIP" weight="70" anticipated_end="0.5"/>
+        <blendshape code="15" type="JAW" weight="70" anticipated_end="0.5"/>
+		<blendshape code="4" type="LIP" weight="70" delayed_start="0.5"/>
+        <blendshape code="16" type="JAW" weight="70" delayed_start="0.5"/>
+    </action>
+	<action name="ye">
+        <blendshape code="3" type="LIP" weight="70" anticipated_end="0.5"/>
+        <blendshape code="15" type="JAW" weight="70" anticipated_end="0.5"/>
+		<blendshape code="6" type="LIP" weight="70" delayed_start="0.5"/>
+        <blendshape code="18" type="JAW" weight="70" delayed_start="0.5"/>
+    </action>
+	<action name="ya">
+        <blendshape code="3" type="LIP" weight="70" anticipated_end="0.5"/>
+        <blendshape code="15" type="JAW" weight="70" anticipated_end="0.5"/>
+		<blendshape code="1" type="LIP" weight="70" delayed_start="0.5"/>
+        <blendshape code="13" type="JAW" weight="70" delayed_start="0.5"/>
+    </action>
+	<action name="yo">
+        <blendshape code="3" type="LIP" weight="70" anticipated_end="0.5"/>
+        <blendshape code="15" type="JAW" weight="70" anticipated_end="0.5"/>
+		<blendshape code="4" type="LIP" weight="70" delayed_start="0.5"/>
+        <blendshape code="16" type="JAW" weight="70" delayed_start="0.5"/>
+    </action>
+	<action name="yz">
+        <blendshape code="3" type="LIP" weight="70" anticipated_end="0.5"/>
+        <blendshape code="15" type="JAW" weight="70" anticipated_end="0.5"/>
+		<blendshape code="8" type="LIP" weight="70" delayed_start="0.5"/>
+        <blendshape code="20" type="JAW" weight="70" delayed_start="0.5"/>
+    </action>
+	<action name="R">
+        <blendshape code="12" type="LIP" weight="70"/>
+		<blendshape code="10" type="TONGUE" weight="70"/>
+        <blendshape code="23" type="JAW" weight="70"/>
+    </action>
+	<action name="Z">
+        <blendshape code="8" type="LIP" weight="70"/>
+        <blendshape code="20" type="JAW" weight="70"/>
+    </action>
+	<action name="ZZ">
+        <blendshape code="8" type="LIP" weight="70"/>
+        <blendshape code="20" type="JAW" weight="70"/>
+    </action>
+	<action name="TT">
+        <blendshape code="3" type="LIP" weight="70"/>
+        <blendshape code="17" type="JAW" weight="70"/>
+    </action>
+	<action name="NN">
+        <blendshape code="12" type="LIP" weight="70"/>
+		<blendshape code="1" type="TONGUE" weight="70"/>
+        <blendshape code="23" type="JAW" weight="70"/>
+    </action>
+	<action name="KK">
+        <blendshape code="12" type="LIP" weight="70"/>
+        <blendshape code="23" type="JAW" weight="70"/>
+    </action>
+	<action name="PP">
+        <blendshape code="12" type="LIP" weight="70"/>
+		<blendshape code="10" type="TONGUE" weight="70"/>
+        <blendshape code="23" type="JAW" weight="70"/>
+    </action>
+	<action name="RR">
+        <blendshape code="12" type="LIP" weight="70"/>
+		<blendshape code="10" type="TONGUE" weight="70"/>
+        <blendshape code="23" type="JAW" weight="70"/>
+    </action>
+	<action name="HH">
+        <blendshape code="12" type="LIP" weight="70"/>
+        <blendshape code="23" type="JAW" weight="70"/>
+    </action>
+	<action name="EE">
+        <blendshape code="12" type="LIP" weight="70"/>
+        <blendshape code="23" type="JAW" weight="70"/>
+    </action>
+	
+	<!-- AUs -->
+	<action name="1">
+        <blendshape code="58" type="LIP" side="RIGHT" weight="100"/>
+        <blendshape code="59" type="LIP" side="LEFT" weight="100"/>
+    </action>
+	<action name="2">
+        <blendshape code="57" type="LIP" side="RIGHT" weight="100"/>
+        <blendshape code="60" type="LIP" side="LEFT" weight="100"/>
+    </action>
+	<action name="4">
+        <blendshape code="61" type="LIP" side="RIGHT" weight="100"/>
+		<blendshape code="62" type="LIP" side="RIGHT" weight="100"/>
+        <blendshape code="63" type="LIP" side="LEFT" weight="100"/>
+		<blendshape code="64" type="LIP" side="LEFT" weight="100"/>
+    </action>
+	<action name="5">
+        <blendshape code="47" type="LIP" side="RIGHT" weight="100"/>
+        <blendshape code="48" type="LIP" side="LEFT" weight="100"/>
+    </action>
+		<action name="7">
+        <blendshape code="49" type="LIP" side="RIGHT" weight="100"/>
+        <blendshape code="50" type="LIP" side="LEFT" weight="100"/>
+    </action>
+	<action name="6">
+        <blendshape code="51" type="LIP" side="RIGHT" weight="70"/>
+        <blendshape code="52" type="LIP" side="LEFT" weight="70"/>
+    </action>
+	<action name="9">
+        <blendshape code="34" type="LIP" side="RIGHT" weight="100"/>
+        <blendshape code="35" type="LIP" side="LEFT" weight="100"/>
+    </action>
+	<action name="10">
+        <blendshape code="13" type="LIP" side="RIGHT" weight="100"/>
+        <blendshape code="14" type="LIP" side="LEFT" weight="100"/>
+    </action>
+	<action name="12">
+        <blendshape code="28" type="LIP" side="RIGHT" weight="100"/>
+        <blendshape code="29" type="LIP" side="LEFT" weight="100"/>
+    </action>
+	<action name="13">
+    <blendshape code="10" type="LIP" weight="70"/>
+    <blendshape code="11" type="LIP" weight="70"/>
+		<blendshape code="28" type="LIP" side="RIGHT" weight="100"/>
+    <blendshape code="29" type="LIP" side="LEFT" weight="100"/>
+  </action>
+	<action name="15">
+        <blendshape code="32" type="LIP" side="RIGHT" weight="100"/>
+        <blendshape code="33" type="LIP" side="LEFT" weight="100"/>
+    </action>
+	<action name="17">
+        <blendshape code="39" type="LIP" weight="100"/>
+    </action>
+	<action name="18">
+        <blendshape code="36" type="LIP" weight="100"/>
+    </action>
+	<action name="22">
+        <blendshape code="9" type="LIP" weight="100"/>
+    </action>
+	<action name="23">
+    <blendshape code="10" type="LIP" weight="100"/>
+    <blendshape code="11" type="LIP" weight="100"/>
+		<blendshape code="36" type="LIP" weight="100"/>
+  </action>
+	<action name="24">
+        <blendshape code="10" type="LIP" weight="100"/>
+        <blendshape code="11" type="LIP" weight="100"/>
+    </action>
+	<action name="25">
+        <blendshape code="15" type="LIP" side="RIGHT" weight="100"/>
+        <blendshape code="16" type="LIP" side="LEFT" weight="100"/>
+		<blendshape code="24" type="JAW" weight="100"/>
+    </action>
+	<action name="26">
+        <blendshape code="26" type="LIP" weight="100"/>
+        <blendshape code="29" type="JAW" weight="100"/>
+    </action>
+	<action name="27">
+        <blendshape code="27" type="LIP" weight="100"/>
+        <blendshape code="30" type="LIP" weight="100"/>
+    </action>
+	<action name="29">
+        <blendshape code="24" type="LIP" weight="100"/>
+    </action>
+	<action name="30">
+        <blendshape code="22" type="LIP" side="RIGHT" weight="100"/>
+        <blendshape code="23" type="LIP" side="LEFT" weight="100"/>
+    </action>
+	<action name="33">
+        <blendshape code="37" type="LIP" side="RIGHT" weight="100"/>
+        <blendshape code="38" type="LIP" side="LEFT" weight="100"/>
+    </action>
+	<action name="38">
+        <blendshape code="43" type="LIP" side="RIGHT" weight="100"/>
+        <blendshape code="44" type="LIP" side="LEFT" weight="100"/>
+    </action>
+	<action name="43">
+        <blendshape code="45" type="LIP" side="RIGHT" weight="100"/>
+        <blendshape code="46" type="LIP" side="LEFT" weight="100"/>
+		<blendshape code="51" type="LIP" side="RIGHT" weight="49"/>
+        <blendshape code="52" type="LIP" side="LEFT" weight="49"/>
+    </action>
+	<action name="44">
+        <blendshape code="49" type="LIP" side="RIGHT" weight="100"/>
+        <blendshape code="50" type="LIP" side="LEFT" weight="100"/>
+    </action>
+</blendshapelibrary>

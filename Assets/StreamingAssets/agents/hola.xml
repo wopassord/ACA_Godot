@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gestuary>
+	<gesture lexeme="hola" side="BOTH" timeMandatory="False" shapeMandatory="False" useThigh="True" duration="1">
+	<initLeftWirstOrientation x="-0.07308525" y="-0.1611093" z="-0.7417384" w="0.6469367" /> 
+	<initRightWirstOrientation x="0.6819122" y="0.7237194" z="-0.07005928" w="0.07948691" /> 
+		<phase type="ready" time="0.159999996423721">
+			<hand side="LEFT" target="True">
+				<radialOrientation value="SIDE" percentage="0" targetOffset="0" /> 
+				<height value="CHEST" percentage="0" targetOffset="0.5" /> 
+				<distance value="CLOSE" percentage="0" targetOffset="0" /> 
+				<armSwivel value="NORMAL" percentage="0" /> 
+				<handShape shape="NONE" />
+				<wristRotation x="-0.0730853" y="-0.1611093" z="-0.7417384" w="0.6469362" />
+			</hand>
+			<hand side="RIGHT" target="True">
+				<radialOrientation value="SIDE" percentage="0" targetOffset="0" />
+				<height value="CHEST" percentage="0" targetOffset="0.5" />
+				<distance value="CLOSE" percentage="0" targetOffset="0" />
+				<armSwivel value="NORMAL" percentage="0" />
+				<handShape shape="NONE" />
+				<wristRotation x="0.681912" y="0.7237192" z="-0.0700592" w="0.07948691" />
+			</hand>
+		</phase>
+	</gesture>
+</gestuary>

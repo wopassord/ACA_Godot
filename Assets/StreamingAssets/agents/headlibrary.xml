@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Heads>
+
+<Head lexeme="none" direction="true">
+		<rotation minx="0" miny="0" minz="0" maxx="0" maxy="0" maxz="0"/>
+		<duration min="0" max="0"/>
+		<repetition min="0" max="0"/>
+	</Head>
+
+	<Head lexeme="nod" direction="false">
+		<rotation minx="0" miny="10" minz="0" maxx="0" maxy="30" maxz="0"/>
+		<duration min="0.5" max="3"/>
+		<repetition min="1" max="4"/>
+	</Head>
+	
+	<Head lexeme="shake" direction="false">
+		<rotation  minx="10" miny="0" minz="0" maxx="30" maxy="0" maxz="0"/>
+		<duration min="0.5" max="3"/>
+		<repetition min="1" max="4"/>
+	</Head>
+	
+	<Head lexeme="wobble" direction="false">
+		<rotation  minx="0" miny="0" minz="10" maxx="0" maxy="0" maxz="40"/>
+		<duration min="0.5" max="3"/>
+		<repetition min="1" max="4"/>
+	</Head>
+	
+	<Head lexeme="forward" direction="true">
+		<rotation minx="0" miny="10" minz="0" maxx="0" maxy="30" maxz="0"/>
+		<duration min="0.5" max="3"/>
+		<repetition min="1" max="4"/>
+	</Head>
+
+	<Head lexeme="backward" direction="true">
+		<rotation minx="0" miny="10" minz="0" maxx="0" maxy="30" maxz="0"/>
+		<duration min="0.5" max="3"/>
+		<repetition min="1" max="4"/>
+	</Head>
+	
+	<Head lexeme="up" direction="true">
+		<rotation  minx="0" miny="10" minz="0" maxx="0" maxy="20" maxz="0"/>
+		<duration min="0.35" max="3"/>
+		<repetition min="0.5" max="0.5"/>
+	</Head>
+	
+	<Head lexeme="down" direction="true">
+		<rotation  minx="0" miny="-10" minz="0" maxx="0" maxy="-30" maxz="0"/>
+		<duration min="0.35" max="3"/>
+		<repetition min="0.5" max="0.5"/>
+	</Head>
+	
+	<Head lexeme="left" direction="true">
+		<rotation  minx="10" miny="0" minz="0" maxx="70" maxy="0" maxz="0"/>
+		<duration min="0.35" max="3"/>
+		<repetition min="0.5" max="0.5"/>
+	</Head>
+	
+	<Head lexeme="right" direction="true">
+		<rotation  minx="-10" miny="0" minz="0" maxx="-50" maxy="0" maxz="0"/>
+		<duration min="0.35" max="3"/>
+		<repetition min="0.5" max="0.5"/>
+	</Head>
+
+  <Head lexeme="tiltr" direction="true">
+		<rotation  minx="0" miny="0" minz="5" maxx="0" maxy="0" maxz="10"/>
+		<duration min="0.35" max="3"/>
+		<repetition min="0.5" max="0.5"/>
+	</Head>   
+	
+	<Head lexeme="down_tiltr" direction="true">
+		<rotation  minx="0" miny="0" minz="5" maxx="0" maxy="0" maxz="10"/>
+		<duration min="0.35" max="3"/>
+		<repetition min="0.5" max="0.5"/>
+	</Head> 
+	
+	<Head lexeme="tiltl" direction="true">
+		<rotation  minx="0" miny="0" minz="-5" maxx="0" maxy="0" maxz="-10"/>
+		<duration min="0.35" max="3"/>
+		<repetition min="0.5" max="0.5"/>
+	</Head> 
+
+	<Head lexeme="up_right" direction="true">
+		<rotation  minx="-10" miny="10" minz="0" maxx="-40" maxy="40" maxz="0"/>
+		<duration min="0.35" max="3"/>
+		<repetition min="0.5" max="0.5"/>
+	</Head>
+	
+	<Head lexeme="up_left" direction="true">
+		<rotation  minx="10" miny="10" minz="0" maxx="40" maxy="40" maxz="0"/>
+		<duration min="0.35" max="3"/>
+		<repetition min="0.5" max="0.5"/>
+	</Head>	
+
+	<Head lexeme="down_right" direction="true">
+		<rotation  minx="-10" miny="-10" minz="0" maxx="-40" maxy="-40" maxz="0"/>
+		<duration min="0.35" max="3"/>
+		<repetition min="0.5" max="0.5"/>
+	</Head>
+	
+	<Head lexeme="down_left" direction="true">
+		<rotation  minx="10" miny="-10" minz="0" maxx="40" maxy="-40" maxz="0"/>
+		<duration min="0.35" max="3"/>
+		<repetition min="0.5" max="0.5"/>
+	</Head>	
+	
+</Heads>

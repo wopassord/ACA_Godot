@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:ext="http://www.bml-initiative.org/bml/coreextensions-1.0" 
+id="bml3" characterId="Audray" composition="APPEND">
+  <gaze id="g0" start="1" end="10" target="Camera"/>
+
+  <posture id="pos1" start="0" end="3">
+    <stance type="handOnTheTable"/>
+    <target name="User" facing="FRONT"/>
+  </posture>
+
+  <posture id="39" start="0" end="10">
+    <stance type="TURN_around"/>
+    <target name="User" facing="BACKWARD"/>
+  </posture>
+
+  <gesture id="ges3" lexeme="mocap:thankful" amount = "1" start="4" end ="5"/>
+  
+  <gaze id="g2" start="1" end="5" target="targ"/>
+
+  <gaze id="g1" start="2" end="3" target="Objet 1"/>
+
+  <gesture id="ges0" lexeme="handUp" mode="BOTH_HANDS" amount = "1" start="0" end ="1"/>
+
+  <gesture id="ges1" lexeme="one" mode="BOTH_HANDS" amount = "1" start="1" end ="2"/>
+
+
+ <pointing id="po1" target="targ" start="1.5" end ="3"/>
+  
+  <gesture id="ges00" lexeme="me" mode="BOTH_HANDS" amount = "1" start="3" end ="4"/>
+
+  <!-- 
+      
+ <gesture id="ges3" lexeme="hello" mode="BOTH_HANDS" amount = "1" start="4.8" end ="6.2"/>
+ <gesture id="ges00" lexeme="me" mode="RIGHT_HAND" amount = "1" start=" 1.2" end ="2.2"/>
+
+
+  <gesture id="ges2" lexeme="three" mode="RIGHT_HAND" amount = "1" start="2" end ="3"/>
+
+  <gesture id="ges1" lexeme="one" mode="LEFT_HAND" amount = "1" start="1" end ="2.5"/>
+  <gesture id="ges2" lexeme="three" mode="RIGHT_HAND" amount = "1" start="2" end ="3"/>
+ 
+ 
+  <gesture id="ges1" lexeme="handDown" mode="LEFT_HAND" amount = "1" start="5.5" end ="6.5"/>
+  <gesture id="ges2" lexeme="handUp" mode="RIGHT_HAND" amount = "1" start="7" end ="8"/>
+
+  <gesture id="ges3" lexeme="mocap:waving" amount = "1" start="9" end ="10.5"/>
+  <posture id="pos2" start="11.2" end="13">
+    <stance type="akimbo"/>
+    <target name="User" facing="FRONT"/>
+  </posture>
+  
+  
+   <posture id="pos1" start="1.9" end="6">
+    <stance type="armCrossed"/>
+    <target name="User" facing="FRONT"/>
+  </posture>
+
+  <gaze id="g2" start="1" target="targ"/>
+  
+  <gazedirectionshift id="g1" start="0" target="User"/>
+ 
+  <speech id="s1" start="0">
+    <description priority="2" type="application/ssml+xml">
+      <speak>
+        Le cheucolat est dans la boîte à biscuits
+      </speak>
+    </description>
+  </speech>
+-->
+
+
+
+</bml>

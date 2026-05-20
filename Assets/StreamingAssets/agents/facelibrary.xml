@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<expressions>	
+<expression lexeme="NONE"/>
+  <expression lexeme="OBLIQUE_BROWS">
+    <action name="1"/>
+		<action name="4"/>
+  </expression>
+  <expression lexeme="RAISE_BROWS">
+    <action name="1"/>
+		<action name="2"/>
+  </expression>
+  <expression lexeme="RAISE_LEFT_BROW">
+    <action name="1" side="LEFT"/>
+		<action name="2" side="LEFT"/>
+  </expression>
+	<expression lexeme="RAISE_RIGHT_BROW">
+    <action name="1" side="RIGHT"/>
+		<action name="2" side="RIGHT"/>
+  </expression>
+  <expression lexeme="LOWER_BROWS">
+    <action name="4"/>
+  </expression>
+  <expression lexeme="LOWER_LEFT_BROW">
+		<action name="4" side="LEFT"/>
+  </expression>
+	<expression lexeme="LOWER_RIGHT_BROW">
+		<action name="4" side="RIGHT"/>
+  </expression>
+	<expression lexeme="LOWER_MOUTH_CORNERS">
+    <action name="15"/>
+  </expression>
+  <expression lexeme="LOWER_LEFT_MOUTH_CORNER">
+		<action name="15" side="LEFT"/>
+  </expression>
+	<expression lexeme="LOWER_RIGHT_MOUTH_CORNER">
+		<action name="15" side="RIGHT"/>
+  </expression>
+	<expression lexeme="RAISE_MOUTH_CORNERS">
+    <action name="12"/>
+  </expression>
+  <expression lexeme="RAISE_LEFT_MOUTH_CORNER">
+		<action name="12" side="LEFT"/>
+  </expression>
+	<expression lexeme="RAISE_RIGHT_MOUTH_CORNER">
+		<action name="12" side="RIGHT"/>
+  </expression>
+	<expression lexeme="OPEN_MOUTH">
+		<action name="26"/>
+  </expression>
+	<expression lexeme="OPEN_LIPS">
+		<action name="25"/>
+  </expression>
+	<expression lexeme="WIDE_EYES">
+		<action name="5"/>
+  </expression>
+	<expression lexeme="CLOSE_EYES">
+		<action name="43"/>
+  </expression>
+	<expression lexeme="HAPPINESS">
+		<action name="6"/>
+		<action name="12"/>
+  </expression>
+	<expression lexeme="SMILE">
+		<action name="12"/>
+  </expression>
+	<expression lexeme="SADNESS">
+		<action name="1"/>
+		<action name="4"/>
+		<action name="15"/>
+  </expression>
+	<expression lexeme="SURPRISE">
+		<action name="1"/>
+		<action name="2"/>
+		<action name="5"/>
+		<action name="26"/>
+  </expression>
+	<expression lexeme="FEAR">
+		<action name="1"/>
+		<action name="2"/>
+		<action name="4"/>
+		<action name="5"/>
+  </expression>
+	<expression lexeme="ANGER">
+		<action name="4"/>
+		<action name="5"/>
+		<action name="7"/>
+		<action name="23"/>
+  </expression>
+	<expression lexeme="DISGUST">
+		<action name="9"/>
+		<action name="15"/>
+		<action name="17"/>
+  </expression>
+	<expression lexeme="FROWN">
+      <action name="4"/>
+  </expression>
+	
+</expressions>

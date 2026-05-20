@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:ext="http://www.bml-initiative.org/bml/coreextensions-1.0" 
+id="bml3" characterId="Lisa" composition="APPEND">
+
+ <gaze id="g1" target="User" start="s1:start" end="s1:tm2"/>
+<!--<gaze id="g3" target="Sphere1" start="3" end="7.5"/>
+ <gaze id="g4" target="Sphere" start="7" end="8.5"/> 
+
+<gaze id="g2" target="User" start="0" end="13"/>-->
+  
+<face id="f1" amount="0.8" start="1" end="2">
+  <ext:facs au="12" side="BOTH"/>
+  <lexeme lexeme="WIDE_EYES"/>
+</face>
+
+<faceLexeme id="f2" lexeme="RAISE_BROWS" amount="0.8" start="2" end="4"/>
+
+  <gesture id="ges1" end="s1:tm1" start="s1:start" mode="LEFT_HAND" lexeme="hello"/>
+  <gesture id="ges2" end="s1:tm2" mode="LEFT_HAND" lexeme="hello"/>
+
+  <head id="h4" lexeme="SHAKE" start="s1:tm1+0.5" end="start+1"/>
+
+  <!-- <head id="h1" lexeme="UP" start="1.2" end="1.8" amount="0.5"/>
+  <gaze id="g4" target="Sphere" start="1" end="2.0"/>
+  <head id="h2" lexeme="RIGHT" start="2" end="5"/>
+  <head id="h3" lexeme="DOWN" start="5" end="7"/>
+  <head id="h4" lexeme="LEFT" start="7" end="9"/>
+  <head id="h5" lexeme="TILT_LEFT" start="9" end="11" amount="0.5"/>
+  <head id="h6" lexeme="TILT_RIGHT" start="11" end="13"/>
+
+
+  
+
+  <posture id="pos1" start="1" end="4">
+  <stance type="LEANING"/>
+    <pose type="ARMS" lexeme="ARMS_OPEN"/>
+</posture>-->
+
+<ext:faceFacs id="f3" au="1" side="LEFT" amount="0.8" start="0" end="2"/> 
+<speech id="s1" start="1">
+	<description priority="2" type="application/ssml+xml">
+    <speak>
+      Pomodoro in the end I <mark name="tm1"/> decided to go to the market place <mark name="tm2"/>
+    </speak>
+	</description>	
+</speech>
+
+  <speech id="s2" start="s1:end+1">
+    <description priority="2" type="application/ssml+xml">
+      <speak>
+        Hi in the end I <mark name="tm1"/> decided to go to the market place <mark name="tm2"/>
+      </speak>
+    </description>
+  </speech>
+  
+</bml>

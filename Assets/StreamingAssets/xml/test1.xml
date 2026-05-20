@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:ext="http://www.bml-initiative.org/bml/coreextensions-1.0"
+     id="bml1" characterId="Samantha" composition="APPEND">
+
+<head id="h5" lexeme="up_left" start="0" end="6" amount="0.8"/>    
+<gaze id="g0" start="1" end="6" target="Sphere"/>
+<head id="h4" lexeme="wobble" start="3" repetition="2" end="start+1" amount="0.5"/>
+<head id="h6" lexeme="nod" start="4.5" repetition="2" end="start+1" amount="0.5"/>
+  
+  
+  
+ <!--  
+     <head id="h1" lexeme="left" start="7" end="12" amount="1"/>
+
+
+  <head id="h6" lexeme="left" start="3" end="5" amount="1"/>
+ 
+ <headdirectionshift id="face1" lexeme="left" start="1" amount="1"/>
+<headdirectionshift id="f" lexeme="none" start="7"/>
+
+
+
+   
+
+
+  <head id="h3" lexeme="down_left" start="3" end="4" amount="1"/>
+    
+ <head id="h3" lexeme="tilt_right" start="2" end="4" amount="1"/>
+
+  <head id="h3" lexeme="DOWN" start="0" end="6" amount="1"/>
+ 
+
+<head id="h4" lexeme="up" start="1" end="6" amount="0.5"/>
+
+  
+  
+    <gaze id="g1" start="8" end="10" target="Sphere"/> 
+  
+
+  
+  <head id="h1" lexeme="UP" start="0.5" end="3"/>
+  <head id="h4" lexeme="forward" start="1" end="3"/>
+<head id="h3" lexeme="TILT_RIGHT" start="1.5" end="4" amount="1"/>
+   <head id="h1" lexeme="UP" start="0.5" end="3"/>
+  
+  <head id="h1" lexeme="UP" start="g1:start" ready="g1:ready" end="3"/>
+  
+  <pointing id="po1" target="Sphere" start="1" end="10"/>
+  <gaze id="g1" start="0.1" end="10" target="Sphere"/>
+ 
+   
+   <gesture id="ge0" lexeme="handDown" start="4" end="5" mode="BOTH"/>
+    <posture id="pos1" start="0.5" end="start+6">
+    <stance type="AKIMBO"/>
+    <target name="User" facing="FRONT"/>
+  </posture>
+
+<gesture id="ge0" lexeme="handDown" start="0" end="start+1" mode="BOTH"/>
+
+  <posture id="pos2" start="pos1:end" end="start+3">
+    <stance type="ARMCROSSED"/>
+    <target name="User" facing="FRONT"/>
+  </posture>
+  
+  
+  <gesture id="ge1" lexeme="handDown" start="4" end="start+1" mode="LEFT"/>
+
+  <gesture id="ge2" lexeme="palpate:Sphere" start="s0:tm1" end="start+4" mode="LEFT"/>
+  
+  
+  
+  
+
+  
+  
+  <head id="h1" lexeme="NOD" start="s0:start" repetition="1"/>
+  <gesture id="ge0" lexeme="handDown" stroke="s0:tm2" mode="RIGHT"/>
+  <gaze id="g0" start="s0:start" end="s0:end" target="User"/>
+  <faceLexeme id="face1" lexeme="happiness" amount = "0.8" start="s0:start" end="s0:end+2"/>
+    <headdirectionshift id="face2" lexeme="UP" amount="1.0" start="1"/>
+    <headdirectionshift id="face1" lexeme="none" amount="1.0" start="5"/>
+  <gaze id="g1" start="po1:start" end="po1:end" target="Interface"/>
+
+  
+
+  
+      <gesture id="ge0" lexeme="handDown" start="2" end="start+1" mode="BOTH"/>
+
+
+  <gesture id="ge2" lexeme="palpate:Sphere" start="s0:tm1" end="start+4" mode="LEFT"/>
+  
+
+  
+  
+  <pointing id="po1" target="Sphere" start="s0:tm3" end="start+6"/>-->
+
+</bml>

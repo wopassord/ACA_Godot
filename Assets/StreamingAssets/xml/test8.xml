@@ -1,0 +1,37 @@
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0" 
+     xmlns:ext="http://www.bml-initiative.org/bml/coreextensions-1.0" 
+     id="bml8" characterId="Assistant" composition="MERGE">
+
+  <gazedirectionshift id="gaze1" start="0" target="none"/>
+
+  <gazedirectionshift id="gaze2" start="3" target="SITAC"/>
+
+  <gazedirectionshift id="gaze3" start="5" target="none"/>
+  
+  
+  <!--<faceShift id="face" lexeme="happiness" amount="1.0" start="1"/>
+
+  <faceShift id="face2" lexeme="none" amount="1.0" start="8"/>
+<speech id="s0" start="0" >
+	<description priority = "2" type="application/ssml+xml">
+		<speak>
+		<mark name="ges0"/> Bonjour Xavier!
+		</speak>
+	</description>
+</speech>
+<gaze id="g00" start="s0:start" end="s0:end+0.5" target="User"/>
+<gesture id="ge00" lexeme="hello" stroke="s0:ges0" mode="RIGHT"/>
+
+<speech id="s1" start="s0:end+0.3" >
+	<description priority = "2" type="application/ssml+xml">
+		<speak>
+			<mark name="ges0"/> Je m'appelle Audrey, je serai votre assistant virtuel pendant cette mission.
+		</speak>
+	</description>
+	</speech>
+	
+<gaze id="g01" start="s1:start" end="s1:end+0.5" target="User"/>
+<gesture id="ge01" lexeme="me" stroke="s1:ges0" mode="RIGHT"/>
+<faceLexeme id="face" lexeme="happiness" amount = "0.5" start="0" end="s1:end+0.4"/>
+-->
+</bml>

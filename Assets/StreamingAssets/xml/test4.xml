@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:ext="http://www.bml-initiative.org/bml/coreextensions-1.0"
+id="bml4" characterId="Lisa" composition="APPEND">
+
+
+<posture id="pos1" start="1" end="6">
+  <stance type="AKIMBO"/>
+  <target name="User" facing="FRONT"/>
+</posture>
+
+  <torso id="t1" lexeme="LEANING" start="1" end="2"/>
+
+  <pointing id="po1" target="Sphere1" mode="LEFT_HAND" stroke="s1:tm1"/>
+  <pointing id="po2" target="Sphere" mode="LEFT_HAND" stroke="s1:tm2"/>
+
+  
+  <gaze id="g1" target="User"/>
+  
+  <speech id="s1" start="g1:ready">
+    <description priority="2" type="application/ssml+xml">
+      <speak>
+        Hello <mark name="tm1"/>! How are you<mark name="tm2"/>? 
+      </speak>
+    </description>
+  </speech>
+
+  
+  <face id="f0" amount="0.8" start="2" end="4">
+    <ext:facs au="12" side="BOTH"/>
+  </face>
+  <face id="f1" amount="0.8" start="s1:start" end="s1:tm1">
+    <ext:facs au="12" side="BOTH"/>
+  </face>
+
+  <head id="h4" lexeme="SHAKE" start="s1:tm1+0.5" end="start+1"/>
+
+  
+
+
+  <!--
+  <gesture id="ge1" lexeme="hello" mode="LEFT_HAND" stroke="s1:tm1"/>
+  
+  -->
+
+    <speech id="s2" start="s1:end+1">
+    <description priority="2" type="application/ssml+xml">
+      <speak>
+        <mark name="tm1"/> Let's go <mark name="tm2"/> to the swimming pool <mark name="tm3"/>! do you agree <mark name="tm4"/>?
+      </speak>
+    </description>
+  </speech>
+  
+  <gesture id="ge2" lexeme="openOne" stroke="s2:tm2"/>
+  <gesture id="ge3" lexeme="open" stroke="s2:tm3"/>
+  <head id="h5" lexeme="NOD" start="ge3:stroke" end="start+1"/>
+
+  <!--
+  <locomotion id="l1" target="AUDIENCE" manner="WALK" start="ge1:end"/>
+  -->
+</bml>

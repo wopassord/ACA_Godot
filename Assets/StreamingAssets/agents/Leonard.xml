@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<agent>
+  <tts name="cereproc" voiceName="Laurent" language="en" country="GB"/>
+  <blendshape table="blendshapelibrary.xml" />
+  <facelibrary table="facelibrary.xml" />
+  <headlibrary table="headlibrary.xml" />
+  <gesturelibrary table="gesturelibrary.xml" />
+  <posturelibrary table="posturelibrary.xml" />
+  <handlibrary table="handlibrary.xml" />
+  <torsolibrary table="torsolibrary.xml" />
+  <faceMesh name="H_DDS_HighRes"/>
+  <bodyMesh name="H_DDS_HighRes"/>
+  <jawMesh name="h_TeethDown"/>
+  <tongueMesh name="h_TeethDown"/>
+  <leftEye name="h_R_eye"/>
+  <rightEye name="h_L_eye"/>
+</agent>

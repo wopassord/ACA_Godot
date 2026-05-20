@@ -1,3 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+Assets/StreamingAssets/cereproc/voices_48k/

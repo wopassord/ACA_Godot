@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:ext="http://www.bml-initiative.org/bml/coreextensions-1.0" id="bml1" characterId="Assistant" composition="APPEND">
+
+
+ <speech id="s1" start="1">
+    <description priority="2" type="application/ssml+xml">
+      <speak>
+		<!--<mark name="tm1"/>Don't you have something to check?<mark name="tm2"/>-->
+		<!--<mark name="tm1"/>Are you sure you have finished here?<mark name="tm2"/>-->
+		<!--<mark name="tm1"/>It’s cooked!<mark name="tm3"/> Go ahead with the next step!<mark name="tm2"/>-->
+		<!--<mark name="tm1"/>Are you sure you checked that the kitchen stove was safe before you left?<mark name="tm2"/>-->
+		<!--<mark name="tm1"/><mark name="tm3"/>The stove has been left unattended<mark name="tm2"/>-->
+		<mark name="tm1"/>Now that you are in the kitchen,<mark name="tm3"/> have <mark name="tm4"/> you <mark name="tm5"/> checked the burners ?<mark name="tm2"/>
+		<!--<mark name="tm1"/><mark name="tm3"/>Have <mark name="tm4"/> you <mark name="tm5"/> checked the oven ?<mark name="tm2"/>-->
+		<!--<mark name="tm1"/>Now that you are near the stove,<mark name="tm3"/> you <mark name="tm4"/> should <mark name="tm5"/>close the oven door.<mark name="tm2"/>-->
+		<!--<mark name="tm1"/><mark name="tm3"/>You <mark name="tm4"/> should <mark name="tm5"/> supervised the burners of the stove.<mark name="tm2"/>-->
+      </speak>
+    </description>
+ </speech>
+ 
+ <!-- **************************************************************** -->
+ <!-- /!\ ATTENTION ! Synchroniser sur start, ready, stroke ET relax ! -->
+ <!-- **************************************************************** -->
+
+<!--<pointing id="po1" target="point" stroke="s1:tm2"/>-->
+
+<!-- GAZE --><!--TOUS : changer s1...s9 -->
+<!--<gaze id="g1" start="s1:start" end="s1:end+1" target="Camera"/>-->
+
+<!-- 1 -->
+<!-- MT -->
+<!--<gaze id="g1" start="s1:start" end="s1:end+1" target="Camera"/>
+<head id="head1" lexeme="up_right" amount = "0.8" start="g1:start" ready="g1:ready" relax="g1:relax" end="g1:end"/>
+<face id="f0" amount="1.5" start="g1:start" ready="g1:ready+0.2" relax="g1:relax" end="g1:end">
+    <ext:facs au="1" side="LEFT"/>
+</face>-->
+
+
+<!-- 2 -->
+<!-- MT -->
+<!--<gaze id="g1" start="s1:start" end="s1:end+1" target="Camera"/>
+<head id="head1" lexeme="up_right" amount = "0.8" start="g1:start" ready="g1:ready" relax="g1:relax" end="g1:end"/>
+<face id="f0" amount="1.5" start="g1:start" ready="g1:ready+0.2" relax="g1:relax" end="g1:end">
+    <ext:facs au="1" side="LEFT"/>
+</face>-->
+
+<!-- Challenge -->
+<!--<faceLexeme id="face0" lexeme="RAISE_BROWS" amount ="1" start="g1:start" ready="g1:ready" relax="g1:relax" end="g1:end"/>-->
+
+
+<!-- 3 -->
+<!-- MT -->
+<!--<gaze id="g1" start="s1:start" end="s1:end+1" target="Camera"/>
+<head id="head1" lexeme="up_right" amount = "0.8" start="g1:start" ready="g1:ready" relax="g1:relax" end="g1:end"/>
+<face id="f0" amount="2" start="g1:start" ready="g1:ready+0.2" relax="g1:relax" end="g1:end">
+    <ext:facs au="1" side="LEFT"/>
+</face>-->
+
+<!-- Call to action -->
+<!--<torso id="t1" lexeme="leaning" amount = "0.4"  ready="s1:tm3" relax="s1:end"/>-->
+
+
+<!-- 4 -->
+<!--GSP-->
+<!--<gaze id="g1" start="s1:start" end="s1:end+2" target="Camera"/>
+<faceLexeme id="face1" lexeme="LOWER_BROWS" amount ="0.8" start="g1:start" ready="g1:ready" relax="s1:end-1" end="s1:end"/>
+<faceLexeme id="face2" lexeme="HAPPINESS" amount ="0.8" start="g1:start" ready="g1:ready" relax="s1:end+1" end="s1:end+2"/>
+<head id="head2" lexeme="tilt_right" amount = "0.6" start="g1:start" ready="g1:ready" relax="s1:end-1" end="s1:end"/>-->
+
+<!-- Challenge -->
+<!--<faceLexeme id="face0" lexeme="RAISE_BROWS" amount ="1" start="g1:start" ready="g1:ready" relax="g1:relax" end="g1:end"/>--> <!--contradiction qui rend bien :) -->
+
+
+<!-- 5 -->
+<!--GSP-->
+<!--<gaze id="g1" start="s1:start" end="s1:end+2" target="Camera"/>
+<faceLexeme id="face1" lexeme="LOWER_BROWS" amount ="0.8" start="g1:start" ready="g1:ready" relax="s1:end-1" end="s1:end"/>
+<faceLexeme id="face2" lexeme="HAPPINESS" amount ="0.8" start="g1:start" ready="g1:ready" relax="s1:end+1" end="s1:end+2"/>
+<head id="head2" lexeme="tilt_right" amount = "0.6" start="g1:start" ready="g1:ready" relax="s1:end-1" end="s1:end"/>-->
+
+<!-- Call to action -->
+<!--<torso id="t1" lexeme="leaning" amount = "0.4"  ready="s1:tm3" relax="s1:end"/>-->
+
+
+<!-- 6 -->
+<!--GSP-->
+<gaze id="g1" start="s1:start" end="s1:end+2" target="Camera"/>
+<faceLexeme id="face1" lexeme="LOWER_BROWS" amount ="0.8" start="g1:start" ready="g1:ready" relax="s1:end-1" end="s1:end"/>
+<faceLexeme id="face2" lexeme="HAPPINESS" amount ="0.8" start="g1:start" ready="g1:ready" relax="s1:end+1" end="s1:end+2"/>
+<head id="head2" lexeme="tilt_right" amount = "0.6" start="g1:start" ready="g1:ready" relax="s1:end-1" end="s1:end"/>
+
+<!-- Restart -->
+<!--<head id="head2" lexeme="tilt_right" amount = "1" start="g1:start" ready="g1:ready" relax="g1:relax" end="g1:end"/> --> <!--A rajouter ?? -->
+<head id="head41" lexeme="down" amount = "1" ready="s1:tm4" relax="s1:tm5" end="s1:tm5+0.15"/>
+<head id="head5" lexeme="forward" amount = "0.3" ready="s1:tm3" relax="s1:end" end="s1:end+0.2"/>
+<gesture id="ge1" lexeme="hello" stroke="s1:tm1" mode="RIGHT"/>
+
+<!-- 7 -->
+<!--GSP-->
+<!--<gaze id="g1" start="s1:start" end="s1:end+2" target="Camera"/>
+<faceLexeme id="face1" lexeme="LOWER_BROWS" amount ="0.8" start="g1:start" ready="g1:ready" relax="s1:end-1" end="s1:end"/>
+<faceLexeme id="face2" lexeme="HAPPINESS" amount ="0.8" start="g1:start" ready="g1:ready" relax="s1:end+1" end="s1:end+2"/>
+<head id="head2" lexeme="tilt_right" amount = "0.6" start="g1:start" ready="g1:ready" relax="s1:end-1" end="s1:end"/>-->
+
+<!-- Give Answer -->
+<!--<head id="head51" lexeme="up" amount = "1.4" ready="s1:tm4" relax="s1:tm5" end="s1:tm5+0.05"/>
+<torso id="t1" lexeme="leaning" amount = "0.4" start="g1:start" ready="g1:ready" relax="s1:end"/>-->
+
+
+<!-- 8 -->
+<!-- GS -->
+<!--<gaze id="g1" start="s1:start" end="s1:end+7" target="Camera"/>
+<faceLexeme id="face1" lexeme="WIDE_EYES" amount ="0.8" start="g1:start" ready="g1:ready" relax="s1:end-1" end="s1:end"/>
+-->
+<!-- Restart -->
+<!--<head id="head2" lexeme="tilt_right" amount = "1" start="g1:start" ready="g1:ready" relax="g1:relax" end="g1:end"/> -->
+<!--<head id="head41" lexeme="down" amount = "1" ready="s1:tm4" relax="s1:tm5" end="s1:tm5+0.05"/>
+<head id="head5" lexeme="forward" amount = "1" ready="s1:tm3" relax="s1:end" end="s1:end+0.05"/>
+-->
+
+
+<!-- 9 -->
+<!-- GS -->
+<!--<gaze id="g1" start="s1:start" end="s1:end+7" target="Camera"/>
+<faceLexeme id="face1" lexeme="WIDE_EYES" amount ="0.8" start="g1:start" ready="g1:ready" relax="s1:end-1" end="s1:end"/>-->
+
+<!-- Give Answer -->
+<!--<head id="head51" lexeme="up" amount = "1.4" ready="s1:tm4" relax="s1:tm5" end="s1:tm5+0.05"/>
+<torso id="t1" lexeme="leaning" amount = "0.4" start="g1:start" ready="g1:ready" relax="s1:end" />-->
+
+</bml>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:ext="http://www.bml-initiative.org/bml/coreextensions-1.0" 
+     id="bml10" characterId="Assistant" composition="APPEND">
+  
+  <speech id="s0" start="0" >
+    <description priority = "2" type="application/ssml+xml">
+      <speak>
+        John, les ressources restantes sont affichées sur <mark name="SITAC"/> SITAC. Il nous reste 3 <mark name="ges0"/> A2MS et 4 mica <mark name="ges1"/>.
+      </speak>
+    </description>
+  </speech>
+
+
+ <torso id="t1" lexeme="leaning" start="1" end="7"/>
+<torso id="t2" lexeme="recline" start="3" end="10"/> 
+  
+  
+ <!--  
+     <posture id="pos1" start="0" end="start+10">
+    <stance type="AKIMBO"/>
+    <target name="User" facing="FRONT"/>
+  </posture>
+  
+   <gesture id="ge00" lexeme="test" start="7" end="start+3" mode="BOTH"/>
+   <pointing id="po10" target="SITAC" start="1" end="start+5"/>
+
+ 
+
+
+
+  <gaze id="g3" start="s0:start" end="start+6" target="SITAC"/>
+<head id="h5" lexeme="SHAKE" start="s0:start+2"  end="start+2"/>
+
+  
+ <gazedirectionshift id="gaze" start="0.2" target="User"/>
+<head id="h3" lexeme="RIGHT" start="s0:start+1" end="start+4"/>
+  <head id="h4" lexeme="UP" start="s0:start+2" end="start+4"/>
+  <gaze id="g1" start="s0:start+1" end="s0:start+10" target="SITAC"/>
+  <gaze id="g2" start="s0:start+2" end="s0:start+9" target="User"/>
+<head id="h3" lexeme="RIGHT" start="s0:start" end="start+6"/>
+  <gaze id="g4" start="s0:start+5" end="s0:start+12" target="Lisa"/>
+  <faceLexeme id="face1" lexeme="happiness" amount = "0.5" start="4" end="s0:end+6"/>
+  <faceShift id="face" lexeme="frown" amount="1.0" start="0"/>
+<head id="h4" lexeme="SHAKE" start="s0:start+1"/>
+  <faceShift id="face2" lexeme="none" amount="1.0" start="3"/>
+  <gazedirectionshift id="gaze3" start="s0:start+13" target="none"/>
+  <gaze id="g1" start="s0:start" end="s0:start+10" target="SITAC"/>
+  <gaze id="g2" start="s0:start+2" end="s0:start+9" target="User"/>
+  <gaze id="g3" start="s0:start+4" end="s0:start+6" target="SITAC"/>
+  <gaze id="g4" start="s0:start+5" end="s0:start+12" target="Lisa"/>
+  <faceLexeme id="face1" lexeme="happiness" amount = "0.5" start="0" end="s0:end+4"/>
+  <faceShift id="face" lexeme="frown" amount="1.0" start="0"/>
+  <faceLexeme id="face1" lexeme="happiness" amount = "0.5" start="0" end="s0:end+4"/>
+  <gazedirectionshift id="gaze" start="0.2" target="User"/>
+    <gesture id="ge00" lexeme="handDown" stroke="s0:ges0" mode="RIGHT"/>
+  <gesture id="ge10" lexeme="handDown" stroke="s0:ges1" mode="LEFT"/>
+  <pointing id="po10" target="SITAC" stroke="s0:SITAC"/>
+  <gaze id="g10" start="po10:start" end="po10:end" target="SITAC"/>
+  -->
+</bml>

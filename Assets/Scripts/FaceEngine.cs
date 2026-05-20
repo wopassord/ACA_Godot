@@ -146,6 +146,25 @@ internal struct HeadDirectionPhase
         }
     }
     */
+/// DUMMY METHODS FOR THE GESTURES AND TORSO TO SOLVE COMPILATION ERRORES
+
+public class GestureEngine
+{
+    public GestureEngine(Character a) {}
+    
+    public void PlayGesture(Bml.Scheduler sched, Bml.Event evt, string lexeme, string modality, string mode, GestureDescription gestureShape, string target, MocapDescription mocap) {}
+    public void ChangePosture(Bml.Scheduler sched, Bml.Event evt, string stance, string category, string target, string facing, PostureDescription pod, MocapDescription mocap) {}
+}
+
+public class TorsoEngine
+{
+    public TorsoEngine(Character a) {}
+    
+    public void PlayTorso(Bml.Scheduler sched, Bml.Event evt, TorsoShape torsoShape, string lexeme, float amount) {}
+}
+
+
+/// DUMMY METHODS FOR THE HEAD, GAZE, AND TORSO TO SOLVE COMPILATION ERRORS DURING THIS PHASE
 
     public class FaceEngine
     {
@@ -212,6 +231,17 @@ internal struct HeadDirectionPhase
             for (int i = 0; i < jaw_tongue_blendshapes.Count; i++)
                 jaw_tongue_blendshapes[i] = 0.0f;
         }
+
+public void PlayGaze(Bml.Scheduler sched, Bml.Event evt, string target) 
+    {
+        // Pending migration
+    }
+
+public void PlayHead(Bml.Scheduler sched, Bml.Event evt, HeadShape headShape, int repetition, double amount, string target) 
+    {
+        // Pending Migration
+    }
+
 
 // ALL COMMENTED FOR THIS INSTANCE (FOCUS AT THE MOMENT: FACE BLENDSHAPES) /////////////////////////////
 

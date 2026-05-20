@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<postures>
+
+	<posture lexeme="BothHandUp" side="BOTH" useThigh="True" >
+	<initLeftWirstOrientation x="0.4882587" y="0.514657" z="0.671812" w="0.2130748" /> 
+	<initRightWirstOrientation x="-0.1329164" y="0.5760864" z="-0.5384838" w="0.6004108" /> 
+		<phase type="ready" time="0.159999996423721">
+			<hand side="LEFT" target="False">
+				<radialOrientation value="SIDE" percentage="0" /> 
+				<height value="ABOVE_HEAD" percentage="0.123" /> 
+				<distance value="TOUCH" percentage="0.511" /> 
+				<armSwivel value="NORMAL" percentage="0" /> 
+				<handShape shape="NONE" />
+				<wristRotation x="0.6500348" y="0.4389974" z="0.5168967" w="0.3428612" />
+			</hand>
+			<hand side="RIGHT" target="False">
+				<radialOrientation value="SIDE" percentage="0" />
+				<height value="ABOVE_HEAD" percentage="0.123" />
+				<distance value="TOUCH" percentage="0.511" />
+				<armSwivel value="NORMAL" percentage="0" />
+				<handShape shape="NONE" />
+				<wristRotation x="-0.2719859" y="0.3946816" z="-0.483379" w="0.7325262" />
+			</hand>
+		</phase>
+	</posture>
+	<posture lexeme="Both" side="BOTH" useThigh="True">
+	<initLeftWirstOrientation x="0.01727121" y="0.7239993" z="0.6887884" w="0.03313259" /> 
+	<initRightWirstOrientation x="-0.08067501" y="-0.6739541" z="0.7204791" w="-0.1420825" /> 
+		<phase type="ready" time="0.159999996423721">
+			<hand side="LEFT" target="False">
+				<radialOrientation value="FAR_OUT" percentage="0" /> 
+				<height value="SHOULDER" percentage="0" /> 
+				<distance value="CLOSE" percentage="0" /> 
+				<armSwivel value="NORMAL" percentage="0" /> 
+				<handShape shape="NONE" />
+				<wristRotation x="0.02063988" y="0.7920309" z="0.6093365" w="0.03114573" />
+			</hand>
+			<hand side="RIGHT" target="False">
+				<radialOrientation value="FAR_OUT" percentage="0" />
+				<height value="SHOULDER" percentage="0" />
+				<distance value="CLOSE" percentage="0" />
+				<armSwivel value="NORMAL" percentage="0" />
+				<handShape shape="NONE" />
+				<wristRotation x="-0.09508471" y="-0.5949515" z="0.7869796" w="-0.1328713" />
+			</hand>
+		</phase>
+	</posture>
+	<posture lexeme="Right" side="RIGHT" useThigh="True">
+	<initLeftWirstOrientation x="-0.6688358" y="-0.2373305" z="-0.6949847" w="0.1154556" /> 
+	<initRightWirstOrientation x="0.1443539" y="0.5744176" z="-0.2054735" w="0.7790939" /> 
+		<phase type="ready" time="0.159999996423721">
+			<hand side="RIGHT" target="False">
+				<radialOrientation value="FAR_OUT" percentage="0" />
+				<height value="SHOULDER" percentage="0" />
+				<distance value="CLOSE" percentage="0" />
+				<armSwivel value="ORTHOGONAL" percentage="0" />
+				<handShape shape="NONE" />
+				<wristRotation x="-0.4713539" y="-0.3386782" z="0.7932589" w="-0.1840185" />
+			</hand>
+		</phase>
+	</posture>
+	<posture lexeme="Left" side="LEFT"  useThigh="True" >
+	<initLeftWirstOrientation x="-0.6616315" y="-0.282261" z="-0.6883178" w="0.09376457" /> 
+	<initRightWirstOrientation x="0.1428393" y="0.5735886" z="-0.2069889" w="0.7795826" /> 
+		<phase type="ready" time="0.159999996423721">
+			<hand side="LEFT" target="False">
+				<radialOrientation value="FAR_OUT" percentage="0" /> 
+				<height value="SHOULDER" percentage="0.485" /> 
+				<distance value="TOUCH" percentage="0" /> 
+				<armSwivel value="OUT" percentage="0.9" /> 
+				<handShape shape="NONE" />
+				<wristRotation x="-0.006582009" y="0.7636439" z="0.640461" w="-0.08132966" />
+			</hand>
+		</phase>
+	</posture>
+
+	<posture lexeme="RightHandUp" side="RIGHT"  useThigh="True">
+	<initLeftWirstOrientation x="-0.6688558" y="-0.2372586" z="-0.6949915" w="0.115447" /> 
+	<initRightWirstOrientation x="0.1428645" y="0.573588" z="-0.2070351" w="0.7795662" /> 
+		<phase type="ready" time="0.159999996423721">
+			<hand side="RIGHT" target="False">
+				<radialOrientation value="SIDE" percentage="0" />
+				<height value="ABOVE_HEAD" percentage="0.199" />
+				<distance value="TOUCH" percentage="0" />
+				<armSwivel value="NORMAL" percentage="0" />
+				<handShape shape="NONE" />
+				<wristRotation x="-0.1381311" y="0.5747463" z="-0.5436058" w="0.5958852" />
+			</hand>
+		</phase>
+	</posture>
+
+	<posture lexeme="LeftHandUp" side="LEFT"  useThigh="True" >
+	<initLeftWirstOrientation x="-0.6688125" y="-0.2371187" z="-0.6950908" w="0.1153859" /> 
+	<initRightWirstOrientation x="0.1429547" y="0.573594" z="-0.2071428" w="0.7795168" /> 
+		<phase type="ready" time="0.159999996423721">
+			<hand side="LEFT" target="False">
+				<radialOrientation value="SIDE" percentage="0.086" /> 
+				<height value="ABOVE_HEAD" percentage="0" /> 
+				<distance value="CLOSE" percentage="0" /> 
+				<armSwivel value="NORMAL" percentage="0" /> 
+				<handShape shape="NONE" />
+				<wristRotation x="0.4082042" y="0.5246254" z="0.5158409" w="0.5404126" />
+			</hand>
+		</phase>
+	</posture>
+	<posture lexeme="maincroise" side="BOTH"  useThigh="True" >
+	<initLeftWirstOrientation x="-0.6687931" y="-0.2370745" z="-0.6951312" w="0.1153449" /> 
+	<initRightWirstOrientation x="0.1429789" y="0.5735992" z="-0.2071602" w="0.779504" /> 
+			<hand side="LEFT" target="False">
+				<radialOrientation value="FRONT" percentage="0.113" /> 
+				<height value="ABDOMEN" percentage="0.328" /> 
+				<distance value="NORMAL" percentage="0" /> 
+				<armSwivel value="OUT" percentage="0.128" /> 
+				<handShape shape="NONE" />
+				<wristRotation x="0.5948036" y="0.4504708" z="0.5800754" w="-0.3267986" />
+			</hand>
+			<hand side="RIGHT" target="False">
+				<radialOrientation value="FRONT" percentage="0.113" />
+				<height value="ABDOMEN" percentage="0.328" />
+				<distance value="NORMAL" percentage="0" />
+				<armSwivel value="OUT" percentage="0.128" />
+				<handShape shape="NONE" />
+				<wristRotation x="0.3889707" y="0.474904" z="-0.3826195" w="0.6904855" />
+			</hand>
+	</posture>
+
+	<posture lexeme="handOnTheTable" side="BOTH" useThigh="True">
+	<initLeftWirstOrientation x="-0.6686302" y="-0.2383282" z="-0.6948746" w="0.1152531" /> 
+	<initRightWirstOrientation x="0.1430481" y="0.5741296" z="-0.2065263" w="0.7792689" /> 
+			<hand side="LEFT" target="False">
+				<radialOrientation value="SIDE" percentage="0" /> 
+				<height value="ABDOMEN" percentage="0.422" /> 
+				<distance value="NORMAL" percentage="0" /> 
+				<armSwivel value="OUT" percentage="0" /> 
+				<handShape shape="NONE" />
+				<wristRotation x="0.66863" y="0.238328" z="0.6948745" w="-0.1152529" />
+			</hand>
+			<hand side="RIGHT" target="False">
+				<radialOrientation value="SIDE" percentage="0" />
+				<height value="ABDOMEN" percentage="0.422" />
+				<distance value="NORMAL" percentage="0" />
+				<armSwivel value="OUT" percentage="0" />
+				<handShape shape="NONE" />
+				<wristRotation x="0.1430481" y="0.5741296" z="-0.2065265" w="0.7792684" />
+			</hand>
+	</posture>
+	
+	
+	<posture lexeme="akimbo" side="LEFT_RIGHT" useThigh="True">
+	<initLeftWirstOrientation x="-0.4214055" y="-0.4828605" z="-0.5573215" w="0.5278792" /> 
+	<initRightWirstOrientation x="0.657213" y="0.5057727" z="-0.3124066" w="0.4633224" /> 
+		<hand side="LEFT">
+			<radialOrientation value="SIDE" percentage="0.1" /> 
+			<height value="BELT" percentage="0.49" /> 
+			<distance value="TOUCH" percentage="0" /> 
+			<armSwivel value="OUT" percentage="0" /> 
+			<handShape shape="NONE" />
+			<wristRotation x="-0.4214056" y="-0.4828606" z="-0.5573216" w="0.5278785" />
+			<wristOrientation x="NORMAL" xPercentage="0" y="NORMAL" yPercentage="0" z="NORMAL" zPercentage="0" />
+		</hand>
+		<hand side="RIGHT">
+			<radialOrientation value="SIDE" percentage="0.1" />
+			<height value="BELT" percentage="0.47" />
+			<distance value="TOUCH" percentage="0" />
+			<armSwivel value="OUT" percentage="0" />
+			<handShape shape="NONE" />
+			<wristRotation x="0.657213" y="0.5057725" z="-0.3124065" w="0.4633222" />
+			<wristOrientation x="NORMAL" xPercentage="0" y="NORMAL" yPercentage="0" z="NORMAL" zPercentage="0" />
+		</hand>
+	</posture>
+	
+	<posture lexeme="akimbo_fist" side="BOTH" useThigh="True">
+	<initLeftWirstOrientation x="-0.07289816" y="-0.1610147" z="-0.7417366" w="0.6469834" /> 
+	<initRightWirstOrientation x="0.6821318" y="0.7235361" z="-0.07001958" w="0.07930686" /> 
+		<hand side="BOTH">
+			<radialOrientation value="SIDE" percentage="0.2" /> 
+			<height value="BELT" percentage="0.48" /> 
+			<distance value="TOUCH" percentage="0" /> 
+			<armSwivel value="NORMAL" percentage="0" /> 
+			<handShape shape="FIST" />
+			<wristOrientation x="NORMAL" xPercentage="0" y="AWAY" yPercentage="0.607" z="INWARD" zPercentage="0.9" />
+		</hand>
+	</posture>
+	
+	<posture lexeme="armCrossed" side="LEFT_RIGHT" useThigh="True">
+	<initLeftWirstOrientation x="-0.07289816" y="-0.1610147" z="-0.7417366" w="0.6469834" /> 
+	<initRightWirstOrientation x="0.6821318" y="0.7235361" z="-0.07001958" w="0.07930686" /> 
+		<hand side="LEFT">
+				<radialOrientation value="INWARD" percentage="0.8" /> 
+				<height value="ABDOMEN" percentage="0" /> 
+				<distance value="TOUCH" percentage="0.7" /> 
+				<armSwivel value="ORTHOGONAL" percentage="0" /> 
+				<handShape shape="FIST" />
+				<wristRotation x="-0.6527953" y="-0.01219337" z="-0.1041754" w="0.7502381" />
+				<wristOrientation x="NORMAL" xPercentage="0" y="NORMAL" yPercentage="0" z="NORMAL" zPercentage="0" />
+			</hand>
+			<hand side="RIGHT">
+				<radialOrientation value="INWARD" percentage="0.7" />
+				<height value="ABDOMEN" percentage="0.3" />
+				<distance value="TOUCH" percentage="0.8" />
+				<armSwivel value="ORTHOGONAL" percentage="0" />
+				<handShape shape="NONE" />
+				<wristRotation x="0.4544873" y="0.05533639" z="-0.12119" w="0.8807338" />
+				<wristOrientation x="NORMAL" xPercentage="0" y="NORMAL" yPercentage="0" z="NORMAL" zPercentage="0" />
+			</hand>
+	</posture>
+	
+</postures>
