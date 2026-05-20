@@ -33,11 +33,12 @@ environment = SubResource("Environment_l3xht")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1139948180]
 transform = Transform3D(0.9999845, -2.0697213e-05, 0.005567533, -0.0055675716, -0.0037174004, 0.9999776, 0, -0.9999931, -0.0037174579, 0, 0, 0)
 
-[node name="Elisa_Unity" parent="." unique_id=2076758102 node_paths=PackedStringArray("faceMesh", "jawMesh") instance=ExtResource("1_f2yey")]
+[node name="Elisa_Unity" parent="." unique_id=2076758102 node_paths=PackedStringArray("faceMesh", "jawMesh", "audioPlayer") instance=ExtResource("1_f2yey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027485073, -1.1920929e-07, 1.3492867)
 script = ExtResource("2_auycd")
 faceMesh = NodePath("GeneralSkeleton/H_DDS_HighRes")
 jawMesh = NodePath("GeneralSkeleton/h_TeethDown")
+audioPlayer = NodePath("AudioStreamPlayer3D")
 
 [node name="GeneralSkeleton" parent="Elisa_Unity" index="0" unique_id=514790663]
 bones/16/position = Vector3(-0.0084294, 0.91445875, 0.019798413)
@@ -114,5 +115,8 @@ libraries/tous = ExtResource("11_ul0b1")
 
 [node name="Camera3D" type="Camera3D" parent="Elisa_Unity" unique_id=1138542113]
 transform = Transform3D(-0.9999765, 0, -0.006859162, 0, 1, 0, 0.006859162, 0, -0.9999765, 0, 2.33315, -0.2623086)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Elisa_Unity" unique_id=1831822306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2949724, -0.002751708)
 
 [editable path="Elisa_Unity"]
