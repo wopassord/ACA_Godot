@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b5mddb0rxn6f"]
 
 [ext_resource type="PackedScene" uid="uid://daftj8pyi78gv" path="res://Assets/Characters/Elisa/Elisa_Unity.fbx" id="1_f2yey"]
-[ext_resource type="Script" uid="uid://bhvmpef5p7bo8" path="res://Assets/Scripts/GodotAnimationEngine.cs" id="2_auycd"]
+[ext_resource type="Script" uid="uid://bhvmpef5p7bo8" path="res://Scripts/GodotAnimationEngine.cs" id="2_auycd"]
 [ext_resource type="AnimationLibrary" uid="uid://cd1mjbejxcjyw" path="res://Assets/Animations/Idle_Stance_01_MB_v01.fbx" id="2_o3sad"]
 [ext_resource type="AnimationLibrary" uid="uid://baaji1lq2wmpp" path="res://Assets/Animations/Idle_Stance_02_MB_v01.fbx" id="3_auycd"]
 [ext_resource type="AnimationLibrary" uid="uid://c61etrm5uhxi2" path="res://Assets/Animations/Waving.fbx" id="4_67p8g"]
@@ -33,11 +33,12 @@ environment = SubResource("Environment_l3xht")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1139948180]
 transform = Transform3D(0.9999845, -2.0697213e-05, 0.005567533, -0.0055675716, -0.0037174004, 0.9999776, 0, -0.9999931, -0.0037174579, 0, 0, 0)
 
-[node name="Elisa_Unity" parent="." unique_id=2076758102 node_paths=PackedStringArray("faceMesh", "jawMesh", "audioPlayer") instance=ExtResource("1_f2yey")]
+[node name="Elisa_Unity" parent="." unique_id=2076758102 node_paths=PackedStringArray("faceMesh", "jawMesh", "agentSkeleton", "audioPlayer") instance=ExtResource("1_f2yey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027485073, -1.1920929e-07, 1.3492867)
 script = ExtResource("2_auycd")
 faceMesh = NodePath("GeneralSkeleton/H_DDS_HighRes")
 jawMesh = NodePath("GeneralSkeleton/h_TeethDown")
+agentSkeleton = NodePath("GeneralSkeleton")
 audioPlayer = NodePath("AudioStreamPlayer3D")
 
 [node name="GeneralSkeleton" parent="Elisa_Unity" index="0" unique_id=514790663]

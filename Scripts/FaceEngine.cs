@@ -54,8 +54,8 @@ internal struct HeadDirectionPhase
 //MG
 /*internal class HeadPositionPhase
 {
-	//internal string type;
-	//internal bool shift;
+	internal string type;
+	internal bool shift;
 	internal float amount;
 	internal float start, end;
 	internal Vector3 fromPos, toPos;
@@ -80,7 +80,7 @@ internal struct HeadDirectionPhase
 			hold_ = 0;
 			if (headShape_.min_repetition_ >= 1)
 			{
-				// This is a repeted signal (nod, shake, wobble)
+				This is a repeted signal (nod, shake, wobble)
 				if (repetition != -1)
 					repetition_ = repetition;
 				else
@@ -100,8 +100,8 @@ internal struct HeadDirectionPhase
 		public Vector3 Rotation(double time)
 		{
 			Vector3 rotation = new Vector3(0, 0, 0);
-			//0.3 secondes minimum head movement duration
-			//0.6 seconds enough to have fluid head movement even with high amplitude
+			0.3 secondes minimum head movement duration
+			0.6 seconds enough to have fluid head movement even with high amplitude
 			if (period_ > 0.6) rotation = headShape_.max_rotation_;
 			else if (period_ < 0.3) rotation = headShape_.min_rotation_;
 			else
@@ -119,12 +119,12 @@ internal struct HeadDirectionPhase
 
 			if (hold_ == 0 )
 			{
-				//there is no hold phase
+				there is no hold phase
 				a = Mathf.Sin(2 * Mathf.PI / (float)period_ * t);
 			}
 			else
 			{
-				//there is a hold phase
+				there is a hold phase
 				if (t >= 0 && t <= offset)
 				{
 					a = Mathf.Sin(2 * Mathf.PI / (float)(4 * offset) * t);
@@ -141,30 +141,30 @@ internal struct HeadDirectionPhase
 			}
 
 			Vector3 result = new Vector3(rotation.x * a, rotation.y * a, rotation.z * a);
-			//TODO: improve angles when gaze is involved
+			TODO: improve angles when gaze is involved
 			return result;
 		}
 	}
 	*/
-/// DUMMY METHODS FOR THE GESTURES AND TORSO TO SOLVE COMPILATION ERRORES
+// /// DUMMY METHODS FOR THE GESTURES AND TORSO TO SOLVE COMPILATION ERRORES
 
-public class GestureEngine
-{
-	public GestureEngine(Character a) {}
+// public class GestureEngine
+// {
+// 	public GestureEngine(Character a) {}
 	
-	public void PlayGesture(Bml.Scheduler sched, Bml.Event evt, string lexeme, string modality, string mode, GestureDescription gestureShape, string target, MocapDescription mocap) {}
-	public void ChangePosture(Bml.Scheduler sched, Bml.Event evt, string stance, string category, string target, string facing, PostureDescription pod, MocapDescription mocap) {}
-}
+// 	public void PlayGesture(Bml.Scheduler sched, Bml.Event evt, string lexeme, string modality, string mode, GestureDescription gestureShape, string target, MocapDescription mocap) {}
+// 	public void ChangePosture(Bml.Scheduler sched, Bml.Event evt, string stance, string category, string target, string facing, PostureDescription pod, MocapDescription mocap) {}
+// }
 
-public class TorsoEngine
-{
-	public TorsoEngine(Character a) {}
+// public class TorsoEngine
+// {
+// 	public TorsoEngine(Character a) {}
 	
-	public void PlayTorso(Bml.Scheduler sched, Bml.Event evt, TorsoShape torsoShape, string lexeme, float amount) {}
-}
+// 	public void PlayTorso(Bml.Scheduler sched, Bml.Event evt, TorsoShape torsoShape, string lexeme, float amount) {}
+// }
 
 
-/// DUMMY METHODS FOR THE HEAD, GAZE, AND TORSO TO SOLVE COMPILATION ERRORS DURING THIS PHASE
+// /// DUMMY METHODS FOR THE HEAD, GAZE, AND TORSO TO SOLVE COMPILATION ERRORS DURING THIS PHASE
 
 	public class FaceEngine
 	{
@@ -232,673 +232,662 @@ public class TorsoEngine
 				jaw_tongue_blendshapes[i] = 0.0f;
 		}
 
-public void PlayGaze(Bml.Scheduler sched, Bml.Event evt, string target) 
-	{
-		// Pending migration
-	}
-
-public void PlayHead(Bml.Scheduler sched, Bml.Event evt, HeadShape headShape, int repetition, double amount, string target) 
-	{
-		// Pending Migration
-	}
 
 
-// ALL COMMENTED FOR THIS INSTANCE (FOCUS AT THE MOMENT: FACE BLENDSHAPES) /////////////////////////////
+		/************************************   HEAD  ******************************************/
 
-		// /************************************   HEAD  ******************************************/
+		public void PlayHead(Bml.Scheduler scheduler, Bml.Event evt, HeadShape head, int repetition, double amount, string target)
+		{
+			if (evt.Synchro == null || !evt.Synchro.Id.Equals("start")) return;
 
-		// public void PlayHead(Bml.Scheduler scheduler, Bml.Event evt, HeadShape head, int repetition, double amount, string target)
-		// {
-		//     if (evt.Synchro == null || !evt.Synchro.Id.Equals("start")) return;
+			float start = (float)evt.Signal.FindSynchro("start").Time;
+			if (head.direction_)
+			{
+				if (evt.Signal.Shift)
+				{ 
+					if (head.lexeme_.Equals("none"))
+						UnsetHeadDirectionShift(start, start + 0.2f);
+					else
+						SetHeadDirectionShift(start, start + 0.2f, head.lexeme_, (float)amount);
+					return;
+				}
 
-		//     float start = (float)evt.Signal.FindSynchro("start").Time;
-		//     if (head.direction_)
-		//     {
-		//         if (evt.Signal.Shift)
-		//         { 
-		//             if (head.lexeme_.Equals("none"))
-		//                 UnsetHeadDirectionShift(start, start + 0.2f);
-		//             else
-		//                 SetHeadDirectionShift(start, start + 0.2f, head.lexeme_, (float)amount);
-		//             return;
-		//         }
+				AddHeadDirectionPhases(start, start + 0.2f, // (float)evt.Signal.FindSynchro("ready").Time,
+									  (float)evt.Signal.FindSynchro("end").Time - 0.2f, // (float)evt.Signal.FindSynchro("relax").Time,
+									  (float)evt.Signal.FindSynchro("end").Time, head.lexeme_, (float)amount);  //and amount ?!?
+			}
+			else
+			{
+				//Debug.Log(head.lexeme_ + "  start:" + evt.Signal.FindSynchro("start").Time + "  dur:" + (evt.Signal.FindSynchro("end").Time - evt.Signal.FindSynchro("start").Time) + "  rep: " + repetition);
+				AddHeadActionPhases((float)evt.Signal.FindSynchro("start").Time, (float)evt.Signal.FindSynchro("end").Time, head.lexeme_, repetition, (float)amount);
+			}
+		}
 
-		//         AddHeadDirectionPhases(start, start + 0.2f, // (float)evt.Signal.FindSynchro("ready").Time,
-		//                               (float)evt.Signal.FindSynchro("end").Time - 0.2f, // (float)evt.Signal.FindSynchro("relax").Time,
-		//                               (float)evt.Signal.FindSynchro("end").Time, head.lexeme_, (float)amount);  //and amount ?!?
-		//     }
-		//     else
-		//     {
-		//         //Debug.Log(head.lexeme_ + "  start:" + evt.Signal.FindSynchro("start").Time + "  dur:" + (evt.Signal.FindSynchro("end").Time - evt.Signal.FindSynchro("start").Time) + "  rep: " + repetition);
-		//         AddHeadActionPhases((float)evt.Signal.FindSynchro("start").Time, (float)evt.Signal.FindSynchro("end").Time, head.lexeme_, repetition, (float)amount);
-		//     }
-		// }
+		private void SetHeadDirectionShift(float st, float r, string lexeme, float a)
+		{
+			List<string> single_mov = new List<string>(lexeme.Split('_'));
 
-		// private void SetHeadDirectionShift(float st, float r, string lexeme, float a)
-		// {
-		//     List<string> single_mov = new List<string>(lexeme.Split('_'));
+			foreach (var sm in single_mov)
+			{
+				string s = "";
+				foreach (var hd in headDirections_)
+				{
+					s = hd.Key.Contains(sm) ? hd.Key : "";
+					if (s != "") break;
+				}
 
-		//     foreach (var sm in single_mov)
-		//     {
-		//         string s = "";
-		//         foreach (var hd in headDirections_)
-		//         {
-		//             s = hd.Key.Contains(sm) ? hd.Key : "";
-		//             if (s != "") break;
-		//         }
+				if (s == "") return;
 
-		//         if (s == "") return;
+				if (headDirections_[s].Count == 0)
+				{
+					//start->ready
+					headDirections_[s].Add(new HeadDirectionPhase
+					{
+						type = "start",
+						amountFrom = 1,
+						amountTo = a,
+						start = st,
+						end = r,
+						from = "none",
+						to = sm
+					});
+				}
+			}
+			headShift_ = new ValueTuple<List<string>, float>(single_mov, a);
 
-		//         if (headDirections_[s].Count == 0)
-		//         {
-		//             //start->ready
-		//             headDirections_[s].Add(new HeadDirectionPhase
-		//             {
-		//                 type = "start",
-		//                 amountFrom = 1,
-		//                 amountTo = a,
-		//                 start = st,
-		//                 end = r,
-		//                 from = "none",
-		//                 to = sm
-		//             });
-		//         }
-		//     }
-		//     headShift_ = new ValueTuple<List<string>, float>(single_mov, a);
-
-		//     // FOR DEBUG
+			// FOR DEBUG
 			
-		//     /*foreach (var elem in headDirections_)
-		//     {
-		//         if (elem.Value.Count > 0)
-		//         {
-		//             agent_.Log("************ " + elem.Key);
-		//             foreach (var t in elem.Value)
-		//                 agent_.Log("from " + t.from + " " + t.amountFrom + " at " + t.start + " to " + t.to + " " + t.amountTo + " at " + t.end);
-		//         }
-		//     }*/
-		// }
+			/*foreach (var elem in headDirections_)
+			{
+				if (elem.Value.Count > 0)
+				{
+					agent_.Log("************ " + elem.Key);
+					foreach (var t in elem.Value)
+						agent_.Log("from " + t.from + " " + t.amountFrom + " at " + t.start + " to " + t.to + " " + t.amountTo + " at " + t.end);
+				}
+			}*/
+		}
 
-		// private void UnsetHeadDirectionShift(float st, float r)
-		// {
-		//     if (headShift_.Item1 != null)
-		//     {
-		//         foreach (var sm in headShift_.Item1)
-		//         {
-		//             string s = "";
-		//             foreach (var hd in headDirections_)
-		//             {
-		//                 s = hd.Key.Contains(sm) ? hd.Key : "";
-		//                 if (s != "") break;
-		//             }
+		private void UnsetHeadDirectionShift(float st, float r)
+		{
+			if (headShift_.Item1 != null)
+			{
+				foreach (var sm in headShift_.Item1)
+				{
+					string s = "";
+					foreach (var hd in headDirections_)
+					{
+						s = hd.Key.Contains(sm) ? hd.Key : "";
+						if (s != "") break;
+					}
 
-		//             if (s == "") return;
+					if (s == "") return;
 
-		//             if (headDirections_[s].Count == 0)
-		//             {
-		//                 //relax->end
-		//                 headDirections_[s].Add(new HeadDirectionPhase
-		//                 {
-		//                     type = "relax",
-		//                     amountFrom = headShift_.Item2,
-		//                     amountTo = 1,
-		//                     start = st,
-		//                     end = r,
-		//                     from = sm,
-		//                     to = "none"
-		//                 });
-		//             }
-		//         }
-		//     }
-		//     headShift_ = new ValueTuple<List<string>, float>(null, 0f);
+					if (headDirections_[s].Count == 0)
+					{
+						//relax->end
+						headDirections_[s].Add(new HeadDirectionPhase
+						{
+							type = "relax",
+							amountFrom = headShift_.Item2,
+							amountTo = 1,
+							start = st,
+							end = r,
+							from = sm,
+							to = "none"
+						});
+					}
+				}
+			}
+			headShift_ = new ValueTuple<List<string>, float>(null, 0f);
 
-		//     // FOR DEBUG
-		//     /*foreach (var elem in headDirections_)
-		//     {
-		//         if (elem.Value.Count > 0)
-		//         {
-		//             agent_.Log("************ " + elem.Key);
-		//             foreach (var t in elem.Value)
-		//                 agent_.Log("from " + t.from + " " + t.amountFrom + " at " + t.start + " to " + t.to + " " + t.amountTo + " at " + t.end);
-		//         }
-		//     }*/
-		// }
+			// FOR DEBUG
+			/*foreach (var elem in headDirections_)
+			{
+				if (elem.Value.Count > 0)
+				{
+					agent_.Log("************ " + elem.Key);
+					foreach (var t in elem.Value)
+						agent_.Log("from " + t.from + " " + t.amountFrom + " at " + t.start + " to " + t.to + " " + t.amountTo + " at " + t.end);
+				}
+			}*/
+		}
 
-		// private void AddHeadDirectionPhases(float start, float ready, float relax, float end, string lexeme, float a)
-		// {
-		//     string[] single_mov = lexeme.Split('_');
-		//     foreach (var sm in single_mov)
-		//     {
-		//         string s = "";
-		//         foreach (var hd in headDirections_)
-		//         {
-		//             s = hd.Key.Contains(sm) ? hd.Key : "";
-		//             if (s != "") break;
-		//         }
+		private void AddHeadDirectionPhases(float start, float ready, float relax, float end, string lexeme, float a)
+		{
+			string[] single_mov = lexeme.Split('_');
+			foreach (var sm in single_mov)
+			{
+				string s = "";
+				foreach (var hd in headDirections_)
+				{
+					s = hd.Key.Contains(sm) ? hd.Key : "";
+					if (s != "") break;
+				}
 
-		//         if (s == "") continue;
+				if (s == "") continue;
 
-		//         var keyframesList = headDirections_[s];
-		//         var newList = new List<HeadDirectionPhase>();
+				var keyframesList = headDirections_[s];
+				var newList = new List<HeadDirectionPhase>();
 				
-		//         float amountFrom = 1;
-		//         string from = "none";
+				float amountFrom = 1;
+				string from = "none";
 
-		//         //find start posiotion for the new signal
-		//         if (keyframesList.Count > 0)
-		//         {
-		//             var keyframe = keyframesList[0];
-		//             //if a previous signal was starting or ending, let's finish
-		//             //rapidly its current phase before starting the new signal
-		//             if (keyframe.type == "start" || keyframe.type == "relax")
-		//             {
-		//                 start = keyframe.end;
-		//                 ready = ready < start ? start + 0.1f : ready;
-		//                 relax = relax < ready ? ready + 0.1f : relax;
-		//                 end   = end   < relax ? relax + 0.1f : end;
-		//                 newList.Add(keyframe);
-		//             }
-		//             amountFrom = keyframe.amountTo;
-		//             from = keyframe.to;
-		//         }
-		//         else
-		//         {
-		//             //if a headshift is running, the start position of the new signal
-		//             //is this shift position
-		//             if(headShift_.Item1 != null && headShift_.Item1.Contains(sm))
-		//             {
-		//                 amountFrom = headShift_.Item2;
-		//                 from = sm;
-		//             }
-		//         }
+				//find start posiotion for the new signal
+				if (keyframesList.Count > 0)
+				{
+					var keyframe = keyframesList[0];
+					//if a previous signal was starting or ending, let's finish
+		            //rapidly its current phase before starting the new signal
+		            if (keyframe.type == "start" || keyframe.type == "relax")
+		            {
+		                start = keyframe.end;
+		                ready = ready < start ? start + 0.1f : ready;
+		                relax = relax < ready ? ready + 0.1f : relax;
+		                end   = end   < relax ? relax + 0.1f : end;
+		                newList.Add(keyframe);
+		            }
+		            amountFrom = keyframe.amountTo;
+		            from = keyframe.to;
+		        }
+		        else
+		        {
+		            //if a headshift is running, the start position of the new signal
+		            //is this shift position
+		            if(headShift_.Item1 != null && headShift_.Item1.Contains(sm))
+		            {
+		                amountFrom = headShift_.Item2;
+		                from = sm;
+		            }
+		        }
 
-		//         //start-ready
-		//         newList.Add(new HeadDirectionPhase 
-		//         {
-		//             type = "start",
-		//             amountFrom = amountFrom,
-		//             amountTo = a,
-		//             start = start,
-		//             end = ready,
-		//             from = from,
-		//             to = sm
+		        //start-ready
+		        newList.Add(new HeadDirectionPhase 
+		        {
+		            type = "start",
+		            amountFrom = amountFrom,
+		            amountTo = a,
+		            start = start,
+		            end = ready,
+		            from = from,
+		            to = sm
 
-		//         });
+		        });
 
-		//         //ready-relax
-		//         newList.Add(new HeadDirectionPhase
-		//         {
-		//             type = "ready",
-		//             amountFrom = a,
-		//             amountTo = a,
-		//             start = ready,
-		//             end = relax,
-		//             from = sm,
-		//             to = sm
+		        //ready-relax
+		        newList.Add(new HeadDirectionPhase
+		        {
+		            type = "ready",
+		            amountFrom = a,
+		            amountTo = a,
+		            start = ready,
+		            end = relax,
+		            from = sm,
+		            to = sm
 
-		//         });
+		        });
 
-		//         //maintain previous signals if they last longer than the new one
-		//         //the end position of the new signal must be the older and longer one 
-		//         float amountTo = 1;
-		//         string to = "none";
-		//         int i = keyframesList.FindIndex(x => x.end > end && x.type.Equals("ready"));
-		//         if(i != -1)
-		//         {
-		//             amountTo = keyframesList[i].amountTo;
-		//             to = keyframesList[i].to;
-		//         }
+		        //maintain previous signals if they last longer than the new one
+		        //the end position of the new signal must be the older and longer one 
+		        float amountTo = 1;
+		        string to = "none";
+		        int i = keyframesList.FindIndex(x => x.end > end && x.type.Equals("ready"));
+		        if(i != -1)
+		        {
+		            amountTo = keyframesList[i].amountTo;
+		            to = keyframesList[i].to;
+		        }
 
-		//         //relax-end
-		//         newList.Add(new HeadDirectionPhase
-		//         {
-		//             type = "relax",
-		//             amountFrom = a,
-		//             amountTo = amountTo,
-		//             start = relax,
-		//             end = end,
-		//             from = sm,
-		//             to = to
-		//         });
+		        //relax-end
+		        newList.Add(new HeadDirectionPhase
+		        {
+		            type = "relax",
+		            amountFrom = a,
+		            amountTo = amountTo,
+		            start = relax,
+		            end = end,
+		            from = sm,
+		            to = to
+		        });
 
-		//         //the other keyframes of the previous signals, if any
-		//         if (i != -1)
-		//         {
-		//             var kf = keyframesList[i];
-		//             newList.Add(new HeadDirectionPhase
-		//             {
-		//                 type = kf.type,
-		//                 amountFrom = kf.amountTo,
-		//                 amountTo = kf.amountTo,
-		//                 start = newList[newList.Count - 1].end,
-		//                 end = kf.end,
-		//                 from = kf.to,
-		//                 to = kf.to
-		//             });
-		//             keyframesList.RemoveRange(0, i+1);
-		//             newList.AddRange(keyframesList);
-		//         }
+		        //the other keyframes of the previous signals, if any
+		        if (i != -1)
+		        {
+		            var kf = keyframesList[i];
+		            newList.Add(new HeadDirectionPhase
+		            {
+		                type = kf.type,
+		                amountFrom = kf.amountTo,
+		                amountTo = kf.amountTo,
+		                start = newList[newList.Count - 1].end,
+		                end = kf.end,
+		                from = kf.to,
+		                to = kf.to
+		            });
+		            keyframesList.RemoveRange(0, i+1);
+		            newList.AddRange(keyframesList);
+		        }
 
-		//         headDirections_[s] = newList;
-		//     }
+		        headDirections_[s] = newList;
+		    }
 
-		//     // FOR DEBUG
-		//     /*foreach (var elem in headDirections_)
-		//     {
-		//         if (elem.Value.Count > 0)
-		//         {
-		//             agent_.Log("************ " + elem.Key);
-		//             foreach (var t in elem.Value)
-		//                 agent_.Log(elem.Key + ":    from " + t.from + " " + t.amountFrom + " at " + t.start + " to " + t.to + " " + t.amountTo + " at " + t.end);
-		//         }
-		//     }*/
-		// }
+		    // FOR DEBUG
+		    /*foreach (var elem in headDirections_)
+		    {
+		        if (elem.Value.Count > 0)
+		        {
+		            agent_.Log("************ " + elem.Key);
+		            foreach (var t in elem.Value)
+		                agent_.Log(elem.Key + ":    from " + t.from + " " + t.amountFrom + " at " + t.start + " to " + t.to + " " + t.amountTo + " at " + t.end);
+		        }
+		    }*/
+		}
 
-		// private void AddHeadActionPhases(float st, float e, string lexeme, int repetition, float amount)
-		// {
-		//     List<string> single_mov = new List<string>(lexeme.Split('_'));
-		//     string dir = "";
+		private void AddHeadActionPhases(float st, float e, string lexeme, int repetition, float amount)
+		{
+			List<string> single_mov = new List<string>(lexeme.Split('_'));
+		    string dir = "";
 			
-		//     if(single_mov.Count > 1)
-		//     {
-		//         dir = single_mov[0];
-		//         lexeme = single_mov[1];
-		//     }
+		    if(single_mov.Count > 1)
+		    {
+		        dir = single_mov[0];
+		        lexeme = single_mov[1];
+		    }
 
-		//     if (!headMovements_.ContainsKey(lexeme))
-		//         return;
+		    if (!headMovements_.ContainsKey(lexeme))
+		        return;
 			
-		//     if (headActions_.Count != 0)
-		//     {
-		//         var previousEnd = headActions_[0];
-		//         headActions_.Clear();
+		    if (headActions_.Count != 0)
+		    {
+		        var previousEnd = headActions_[0];
+		        headActions_.Clear();
 
-		//         //finish the previous head action
-		//         headActions_.Add(new HeadDirectionPhase
-		//         {
-		//             type = previousEnd.type,
-		//             amountFrom = previousEnd.amountFrom,
-		//             amountTo = previousEnd.amountTo,
-		//             start = previousEnd.start,
-		//             end = previousEnd.end + 0.1f,
-		//             from = previousEnd.from,
-		//             to = previousEnd.to
-		//         });
-		//         st += 0.1f;
-		//     }
+		        //finish the previous head action
+		        headActions_.Add(new HeadDirectionPhase
+		        {
+		            type = previousEnd.type,
+		            amountFrom = previousEnd.amountFrom,
+		            amountTo = previousEnd.amountTo,
+		            start = previousEnd.start,
+		            end = previousEnd.end + 0.1f,
+		            from = previousEnd.from,
+		            to = previousEnd.to
+		        });
+		        st += 0.1f;
+		    }
 
-		//     if (repetition <= 0)
-		//         repetition = (int)(random_.NextDouble() * 2) + 2; //random repetitions, between 1 and 3  ???? TO CORRECT
+		    if (repetition <= 0)
+		        repetition = (int)(random_.NextDouble() * 2) + 2; //random repetitions, between 1 and 3  ???? TO CORRECT
 
-		//     float period = (e - st) / repetition;
+		    float period = (e - st) / repetition;
 
-		//     string item1 = headMovements_[lexeme].Item1;
-		//     string item2 = headMovements_[lexeme].Item2;
+		    string item1 = headMovements_[lexeme].Item1;
+		    string item2 = headMovements_[lexeme].Item2;
 
-		//     string one = dir.Equals(item1) ? item1 : dir.Equals(item2) ? item2 : item1; //the last one should be random
-		//     string two = one.Equals(item1) ? item2 : item1;
+		    string one = dir.Equals(item1) ? item1 : dir.Equals(item2) ? item2 : item1; //the last one should be random
+		    string two = one.Equals(item1) ? item2 : item1;
 
-		//     string from = "none";
-		//     float amountFrom = 1;
+		    string from = "none";
+		    float amountFrom = 1;
 
-		//     foreach (var dirs in headDirections_)
-		//     {
-		//         if(dirs.Key.Equals(one) && dirs.Value.Count > 0)
-		//         {
-		//             var keyframe = dirs.Value[0];
-		//             if (keyframe.type == "start" || keyframe.type == "relax")
-		//             {
-		//                 var delta = keyframe.end - st;
-		//                 st = keyframe.end;
-		//                 e += delta;
-		//             }
-		//             amountFrom = keyframe.amountTo;
-		//             from = keyframe.to;
-		//         }
-		//         else
-		//         {
-		//             if (headShift_.Item1 != null && headShift_.Item1.Contains(one))
-		//             {
-		//                 amountFrom = headShift_.Item2;
-		//                 from = one;
-		//             }
-		//         }
-		//     }
+		    foreach (var dirs in headDirections_)
+		    {
+		        if(dirs.Key.Equals(one) && dirs.Value.Count > 0)
+		        {
+		            var keyframe = dirs.Value[0];
+		            if (keyframe.type == "start" || keyframe.type == "relax")
+		            {
+		                var delta = keyframe.end - st;
+		                st = keyframe.end;
+		                e += delta;
+		            }
+		            amountFrom = keyframe.amountTo;
+		            from = keyframe.to;
+		        }
+		        else
+		        {
+		            if (headShift_.Item1 != null && headShift_.Item1.Contains(one))
+		            {
+		                amountFrom = headShift_.Item2;
+		                from = one;
+		            }
+		        }
+		    }
 
-		//     headActions_.Add(new HeadDirectionPhase
-		//     {
-		//         type = "start",
-		//         amountFrom = 1,
-		//         amountTo = amount,
-		//         start = st,
-		//         end = st + 0.25f * period,
-		//         from = "none",
-		//         to = one
-		//     });
+		    headActions_.Add(new HeadDirectionPhase
+		    {
+		        type = "start",
+		        amountFrom = 1,
+		        amountTo = amount,
+		        start = st,
+		        end = st + 0.25f * period,
+		        from = "none",
+		        to = one
+		    });
 
-		//     for (int i = 0; i < repetition; ++i)
-		//     {
-		//         st += i > 0 ? period : 0;
+		    for (int i = 0; i < repetition; ++i)
+		    {
+		        st += i > 0 ? period : 0;
 
-		//         headActions_.Add(new HeadDirectionPhase
-		//         {
-		//             type = "stroke",
-		//             amountFrom = amount,
-		//             amountTo = amount,
-		//             start = st + 0.25f * period,
-		//             end = st + 0.75f * period,
-		//             from = one,
-		//             to = two
-		//         });
-		//         (two, one) = (one, two);  //swap values
+		        headActions_.Add(new HeadDirectionPhase
+		        {
+		            type = "stroke",
+		            amountFrom = amount,
+		            amountTo = amount,
+		            start = st + 0.25f * period,
+		            end = st + 0.75f * period,
+		            from = one,
+		            to = two
+		        });
+		        (two, one) = (one, two);  //swap values
 
-		//         if (repetition > 1 && i != repetition - 1)
-		//         {
-		//             headActions_.Add(new HeadDirectionPhase
-		//             {
-		//                 type = "stroke",
-		//                 amountFrom = amount,
-		//                 amountTo = amount,
-		//                 start = st + 0.75f * period,
-		//                 end = st + 1.25f * period,
-		//                 from = one,
-		//                 to = two
-		//             });
-		//             (two, one) = (one, two);
-		//         }
-		//     }
+		        if (repetition > 1 && i != repetition - 1)
+		        {
+		            headActions_.Add(new HeadDirectionPhase
+		            {
+		                type = "stroke",
+		                amountFrom = amount,
+		                amountTo = amount,
+		                start = st + 0.75f * period,
+		                end = st + 1.25f * period,
+		                from = one,
+		                to = two
+		            });
+		            (two, one) = (one, two);
+		        }
+		    }
 
-		//     headActions_.Add(new HeadDirectionPhase
-		//     {
-		//         type = "relax",
-		//         amountFrom = amount,
-		//         amountTo = 1,
-		//         start = st + 0.75f * period,
-		//         end = st + period,
-		//         from = one,
-		//         to = "none"
-		//     });
-		// }
+		    headActions_.Add(new HeadDirectionPhase
+		    {
+		        type = "relax",
+		        amountFrom = amount,
+		        amountTo = 1,
+		        start = st + 0.75f * period,
+		        end = st + period,
+		        from = one,
+		        to = "none"
+		    });
+		}
 
 	   
 
-		// public bool GetCurrentHeadDirection(float time, ref List<Animation.HeadDirectionPhase> headDirections)
-		// {
-		//     bool flag = false;
-		//     headDirections = new List<Animation.HeadDirectionPhase>();
-		//     foreach (var elem in headDirections_)
-		//     {
-		//         var dirs = elem.Value;
+		public bool GetCurrentHeadDirection(float time, ref List<Animation.HeadDirectionPhase> headDirections)
+		{
+		    bool flag = false;
+		    headDirections = new List<Animation.HeadDirectionPhase>();
+		    foreach (var elem in headDirections_)
+		    {
+		        var dirs = elem.Value;
 
-		//         //remove ended phase
-		//         if(dirs.Count > 0)
-		//             if (dirs[0].end < time) dirs.RemoveAt(0);
+		        //remove ended phase
+		        if(dirs.Count > 0)
+		            if (dirs[0].end < time) dirs.RemoveAt(0);
 
-		//         if(dirs.Count > 0)
-		//         {
-		//             var dir = dirs[0];
-		//             if(time >= dir.start && time <= dir.end)
-		//             {
-		//                 flag = true;
-		//                 string from = dir.from, to = dir.to;
-		//                 float amountFrom = dir.amountFrom, amountTo = dir.amountTo;
+		        if(dirs.Count > 0)
+		        {
+		            var dir = dirs[0];
+		            if(time >= dir.start && time <= dir.end)
+		            {
+		                flag = true;
+		                string from = dir.from, to = dir.to;
+		                float amountFrom = dir.amountFrom, amountTo = dir.amountTo;
 
-		//                 if (dir.to.Equals("none") && headShift_.Item1 != null)
-		//                 {
-		//                     var k = headShift_.Item1.FindIndex(x => elem.Key.Contains(x));
-		//                     if (k != -1)
-		//                     {
-		//                         to = headShift_.Item1[k];
-		//                         amountTo = headShift_.Item2;
-		//                     }
-		//                 }
+		                if (dir.to.Equals("none") && headShift_.Item1 != null)
+		                {
+		                    var k = headShift_.Item1.FindIndex(x => elem.Key.Contains(x));
+		                    if (k != -1)
+		                    {
+		                        to = headShift_.Item1[k];
+		                        amountTo = headShift_.Item2;
+		                    }
+		                }
 
-		//                 headDirections.Add(new Animation.HeadDirectionPhase
-		//                 {
-		//                     type = dir.type,
-		//                     lerpTime = (time - dir.start) / (dir.end - dir.start),
-		//                     from = from,
-		//                     to = to,
-		//                     amountFrom = amountFrom,
-		//                     amountTo = amountTo
-		//                 });
-		//             }
-		//         }
-		//         else
-		//         {
-		//             if (headShift_.Item1 != null)
-		//             {
-		//                 flag = true;
-		//                 var k = headShift_.Item1.FindIndex(x => elem.Key.Contains(x));
-		//                 if (k != -1)
-		//                 {
-		//                     string to = headShift_.Item1[k];
-		//                     headDirections.Add(new Animation.HeadDirectionPhase
-		//                     {
-		//                         type = "stroke",
-		//                         lerpTime = 1,
-		//                         from = to,
-		//                         to = to,
-		//                         amountFrom = headShift_.Item2,
-		//                         amountTo = headShift_.Item2
-		//                     });
-		//                 }
-		//             }
-		//         }
-		//     }
+		                headDirections.Add(new Animation.HeadDirectionPhase
+		                {
+		                    type = dir.type,
+		                    lerpTime = (time - dir.start) / (dir.end - dir.start),
+		                    from = from,
+		                    to = to,
+		                    amountFrom = amountFrom,
+		                    amountTo = amountTo
+		                });
+		            }
+		        }
+		        else
+		        {
+		            if (headShift_.Item1 != null)
+		            {
+		                flag = true;
+		                var k = headShift_.Item1.FindIndex(x => elem.Key.Contains(x));
+		                if (k != -1)
+		                {
+		                    string to = headShift_.Item1[k];
+		                    headDirections.Add(new Animation.HeadDirectionPhase
+		                    {
+		                        type = "stroke",
+		                        lerpTime = 1,
+		                        from = to,
+		                        to = to,
+		                        amountFrom = headShift_.Item2,
+		                        amountTo = headShift_.Item2
+		                    });
+		                }
+		            }
+		        }
+		    }
 
-		//     // FOR DEBUG
-		//     /*foreach(var e in headDirections_)
-		//     {
-		//         Debug.Log("!!!! " + e.from + " " + e.amountFrom + " to: " + e.to + " " + e.amountTo + " lerp: " + e.lerpTime);
-		//     }*/
+		    // FOR DEBUG
+		    /*foreach(var e in headDirections_)
+		    {
+		        Debug.Log("!!!! " + e.from + " " + e.amountFrom + " to: " + e.to + " " + e.amountTo + " lerp: " + e.lerpTime);
+		    }*/
 			
-		//     return flag;
-		// }
+		    return flag;
+		}
 
-		// public Animation.HeadDirectionPhase GetCurrentHeadAction(float time)
-		// {
-		//     //remove ended phase
-		//     if (headActions_.Count > 0)
-		//         if (headActions_[0].end < time) headActions_.RemoveAt(0);
+		public Animation.HeadDirectionPhase GetCurrentHeadAction(float time)
+		{
+		    //remove ended phase
+		    if (headActions_.Count > 0)
+		        if (headActions_[0].end < time) headActions_.RemoveAt(0);
 
-		//     if (headActions_.Count > 0)
-		//     {
-		//         var act = headActions_[0];
-		//         if (time >= act.start && time <= act.end)
-		//         {
-		//             string from = act.from, to = act.to;
-		//             float amountFrom = act.amountFrom, amountTo = act.amountTo;
+		    if (headActions_.Count > 0)
+		    {
+		        var act = headActions_[0];
+		        if (time >= act.start && time <= act.end)
+		        {
+		            string from = act.from, to = act.to;
+		            float amountFrom = act.amountFrom, amountTo = act.amountTo;
 
-		//             /*if (act.to.Equals("none") && headShift_.Item1.Contains(elem.Key))
-		//             {
-		//                 to = elem.Key;
-		//                 amountTo = headShift_.Item2;
-		//             }*/
+		            /*if (act.to.Equals("none") && headShift_.Item1.Contains(elem.Key))
+		            {
+		                to = elem.Key;
+		                amountTo = headShift_.Item2;
+		            }*/
 
-		//             return new Animation.HeadDirectionPhase
-		//             {
-		//                 type = act.type,
-		//                 lerpTime = (time - act.start) / (act.end - act.start),
-		//                 from = from,
-		//                 to = to,
-		//                 amountFrom = amountFrom,
-		//                 amountTo = amountTo
-		//             };
-		//         }
-		//     }
+		            return new Animation.HeadDirectionPhase
+		            {
+		                type = act.type,
+		                lerpTime = (time - act.start) / (act.end - act.start),
+		                from = from,
+		                to = to,
+		                amountFrom = amountFrom,
+		                amountTo = amountTo
+		            };
+		        }
+		    }
 
-		//     // FOR DEBUG
-		//     /*foreach(var e in headDirections_)
-		//     {
-		//         Debug.Log("!!!! " + e.from + " " + e.amountFrom + " to: " + e.to + " " + e.amountTo + " lerp: " + e.lerpTime);
-		//     }*/
+		    // FOR DEBUG
+		    /*foreach(var e in headDirections_)
+		    {
+		        Debug.Log("!!!! " + e.from + " " + e.amountFrom + " to: " + e.to + " " + e.amountTo + " lerp: " + e.lerpTime);
+		    }*/
 
-		//     return new Animation.HeadDirectionPhase
-		//     {
-		//         type = "",
-		//         lerpTime = 0,
-		//         from = "",
-		//         to = "",
-		//         amountFrom = 0,
-		//         amountTo = 0
-		//     }; 
-		// }
+		    return new Animation.HeadDirectionPhase
+		    {
+		        type = "",
+		        lerpTime = 0,
+		        from = "",
+		        to = "",
+		        amountFrom = 0,
+		        amountTo = 0
+		    }; 
+		}
 
 
-		// /****************************************************************************************/
+		/****************************************************************************************/
 
-		// /************************************   GAZE   ******************************************/
+		/************************************   GAZE   ******************************************/
 
-		// public void PlayGaze(Bml.Scheduler scheduler, Bml.Event evt, string target)
-		// {
-		//     if (evt.Synchro == null || !evt.Synchro.Id.Equals("start")) return;
-		//     if (!evt.Signal.Shift && !target.Equals("none") && agent_.animationEngine.TargetFound(target) == false) return;
+		public void PlayGaze(Bml.Scheduler scheduler, Bml.Event evt, string target)
+		{
+		    if (evt.Synchro == null || !evt.Synchro.Id.Equals("start")) return;
+		    if (!evt.Signal.Shift && !target.Equals("none") && agent_.animationEngine.TargetFound(target) == false) return;
 
-		//     if (evt.Signal.Shift)
-		//     {
-		//         if (target.Equals("none"))
-		//             UnsetGazeShift((float)evt.Signal.FindSynchro("start").Time, (float)evt.Signal.FindSynchro("start").Time + 0.2f);
-		//         else
-		//             SetGazeShift((float)evt.Signal.FindSynchro("start").Time, (float)evt.Signal.FindSynchro("start").Time + 0.2f, target);
-		//         return;
-		//     }
+		    if (evt.Signal.Shift)
+		    {
+		        if (target.Equals("none"))
+		            UnsetGazeShift((float)evt.Signal.FindSynchro("start").Time, (float)evt.Signal.FindSynchro("start").Time + 0.2f);
+		        else
+		            SetGazeShift((float)evt.Signal.FindSynchro("start").Time, (float)evt.Signal.FindSynchro("start").Time + 0.2f, target);
+		        return;
+		    }
 
-		//     AddGazePhases((float)evt.Signal.FindSynchro("start").Time, (float)evt.Signal.FindSynchro("ready").Time,
-		//                     (float)evt.Signal.FindSynchro("relax").Time, (float)evt.Signal.FindSynchro("end").Time, target);
-		// }
+		    AddGazePhases((float)evt.Signal.FindSynchro("start").Time, (float)evt.Signal.FindSynchro("ready").Time,
+		                    (float)evt.Signal.FindSynchro("relax").Time, (float)evt.Signal.FindSynchro("end").Time, target);
+		}
 
-		// private void SetGazeShift(float st, float r, string target)
-		// {
-		//     if (gazePhases_.Count == 0)
-		//     {
-		//         //start->ready
-		//         var gph = new GazePhase
-		//         {
-		//             type = "start",
-		//             shift = true,
-		//             start = st,
-		//             end = r,
-		//             target_from = "",
-		//             target_to = target
-		//         };
-		//         if (!gazeShift_.Equals(""))
-		//             gph.target_from = gazeShift_;
+		private void SetGazeShift(float st, float r, string target)
+		{
+		    if (gazePhases_.Count == 0)
+		    {
+		        //start->ready
+		        var gph = new GazePhase
+		        {
+		            type = "start",
+		            shift = true,
+		            start = st,
+		            end = r,
+		            target_from = "",
+		            target_to = target
+		        };
+		        if (!gazeShift_.Equals(""))
+		            gph.target_from = gazeShift_;
 
-		//         gazePhases_.Add(gph);
-		//     }
-		//     gazeShift_ = target;
-		// }
+		        gazePhases_.Add(gph);
+		    }
+		    gazeShift_ = target;
+		}
 
-		// private void UnsetGazeShift(float st, float r)
-		// {
-		//     if (gazePhases_.Count == 0 && !gazeShift_.Equals(""))
-		//     {
-		//         //start->ready
-		//         var gph = new GazePhase
-		//         {
-		//             type = "relax",
-		//             shift = true,
-		//             start = st,
-		//             end = r,
-		//             target_from = gazeShift_,
-		//             target_to = ""
-		//         };
-		//         gazePhases_.Add(gph);
-		//     }
-		//     gazeShift_ = "";
-		// }
+		private void UnsetGazeShift(float st, float r)
+		{
+		    if (gazePhases_.Count == 0 && !gazeShift_.Equals(""))
+		    {
+		        //start->ready
+		        var gph = new GazePhase
+		        {
+		            type = "relax",
+		            shift = true,
+		            start = st,
+		            end = r,
+		            target_from = gazeShift_,
+		            target_to = ""
+		        };
+		        gazePhases_.Add(gph);
+		    }
+		    gazeShift_ = "";
+		}
 
-		// private void AddGazePhases(float st, float r, float re, float e, string target)
-		// {
-		//     string from = "";
-		//     List<GazePhase> oldGazePhases = new List<GazePhase>();
-		//     if (gazePhases_.Count != 0)
-		//     {
-		//         if (gazePhases_[gazePhases_.Count - 1].type.Equals("start") || gazePhases_[gazePhases_.Count - 1].type.Equals("ready"))
-		//             from = gazePhases_[gazePhases_.Count - 1].target_to;
-		//         else
-		//             from = gazePhases_[gazePhases_.Count - 1].target_from;
-		//         oldGazePhases = new List<GazePhase>();
-		//         oldGazePhases.AddRange(gazePhases_);
-		//         gazePhases_.Clear();
-		//     }
-		//     //relax->end
-		//     var gph = new GazePhase
-		//     {
-		//         type = "relax",
-		//         shift = false,
-		//         start = re,
-		//         end = e,
-		//         target_from = target,
-		//         target_to = ""
-		//     };
-		//     gazePhases_.Add(gph);
+		private void AddGazePhases(float st, float r, float re, float e, string target)
+		{
+		    string from = "";
+		    List<GazePhase> oldGazePhases = new List<GazePhase>();
+		    if (gazePhases_.Count != 0)
+		    {
+		        if (gazePhases_[gazePhases_.Count - 1].type.Equals("start") || gazePhases_[gazePhases_.Count - 1].type.Equals("ready"))
+		            from = gazePhases_[gazePhases_.Count - 1].target_to;
+		        else
+		            from = gazePhases_[gazePhases_.Count - 1].target_from;
+		        oldGazePhases = new List<GazePhase>();
+		        oldGazePhases.AddRange(gazePhases_);
+		        gazePhases_.Clear();
+		    }
+		    //relax->end
+		    var gph = new GazePhase
+		    {
+		        type = "relax",
+		        shift = false,
+		        start = re,
+		        end = e,
+		        target_from = target,
+		        target_to = ""
+		    };
+		    gazePhases_.Add(gph);
 
-		//     //ready->relax
-		//     gph = new GazePhase
-		//     {
-		//         type = "ready",
-		//         shift = false,
-		//         start = r,
-		//         end = re,
-		//         target_from = target,
-		//         target_to = target
-		//     };
-		//     gazePhases_.Add(gph);
+		    //ready->relax
+		    gph = new GazePhase
+		    {
+		        type = "ready",
+		        shift = false,
+		        start = r,
+		        end = re,
+		        target_from = target,
+		        target_to = target
+		    };
+		    gazePhases_.Add(gph);
 
-		//     //start->ready
-		//     gph = new GazePhase
-		//     {
-		//         type = "start",
-		//         shift = false,
-		//         start = st,
-		//         end = r,
-		//         target_from = from,
-		//         target_to = target
-		//     };
-		//     gazePhases_.Add(gph);
+		    //start->ready
+		    gph = new GazePhase
+		    {
+		        type = "start",
+		        shift = false,
+		        start = st,
+		        end = r,
+		        target_from = from,
+		        target_to = target
+		    };
+		    gazePhases_.Add(gph);
 
-		//     var index = oldGazePhases.FindLastIndex(x => x.type.Equals("ready") && x.end > gazePhases_[0].end);
-		//     if (index != -1)
-		//     {
-		//         oldGazePhases[index].start = gazePhases_[0].end;
-		//         gazePhases_[0].target_to = oldGazePhases[index].target_from;
-		//         for (int i = index; i >= 0; --i)
-		//             gazePhases_.Insert(0, oldGazePhases[i]);
-		//         oldGazePhases.Clear();
-		//     }
+		    var index = oldGazePhases.FindLastIndex(x => x.type.Equals("ready") && x.end > gazePhases_[0].end);
+		    if (index != -1)
+		    {
+		        oldGazePhases[index].start = gazePhases_[0].end;
+		        gazePhases_[0].target_to = oldGazePhases[index].target_from;
+		        for (int i = index; i >= 0; --i)
+		            gazePhases_.Insert(0, oldGazePhases[i]);
+		        oldGazePhases.Clear();
+		    }
 
-		//     foreach(var g in gazePhases_)
-		//     {
-		//         //agent_.Log(g.type + " " + g.start + " " + g.end);
-		//     }
-		// }
+		    foreach(var g in gazePhases_)
+		    {
+		        //agent_.Log(g.type + " " + g.start + " " + g.end);
+		    }
+		}
 
-		// public bool GetCurrentGazeDirection(float time, ref float lerpTime, ref string from, ref string to)
-		// {
-		//     //clean ended phases
-		//     if (gazePhases_.Count >= 1 && time >= gazePhases_[gazePhases_.Count - 1].end)
-		//         gazePhases_.RemoveAt(gazePhases_.Count - 1);
+		public bool GetCurrentGazeDirection(float time, ref float lerpTime, ref string from, ref string to)
+		{
+		    //clean ended phases
+		    if (gazePhases_.Count >= 1 && time >= gazePhases_[gazePhases_.Count - 1].end)
+		        gazePhases_.RemoveAt(gazePhases_.Count - 1);
 
-		//     if (gazePhases_.Count >= 1)
-		//     {
-		//         GazePhase gph = gazePhases_[gazePhases_.Count - 1];
+		    if (gazePhases_.Count >= 1)
+		    {
+		        GazePhase gph = gazePhases_[gazePhases_.Count - 1];
 
-		//         from = gph.target_from.Equals("") && !gph.shift ? gazeShift_ : gph.target_from;
-		//         to = gph.target_to.Equals("") && !gph.shift ? gazeShift_ : gph.target_to;
+		        from = gph.target_from.Equals("") && !gph.shift ? gazeShift_ : gph.target_from;
+		        to = gph.target_to.Equals("") && !gph.shift ? gazeShift_ : gph.target_to;
 
-		//         lerpTime = (time - gph.start) / (gph.end - gph.start);
-		//     }
-		//     else if (!gazeShift_.Equals(""))
-		//     {
-		//         lerpTime = 1;
-		//         from = to = gazeShift_;
-		//     }
-		//     else
-		//         return false;
-		//     return true;
-		// }
+		        lerpTime = (time - gph.start) / (gph.end - gph.start);
+		    }
+		    else if (!gazeShift_.Equals(""))
+		    {
+		        lerpTime = 1;
+		        from = to = gazeShift_;
+		    }
+		    else
+		        return false;
+		    return true;
+		}
 
 		/****************************************************************************************/
 

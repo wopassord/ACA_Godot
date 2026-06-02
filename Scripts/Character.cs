@@ -26,8 +26,11 @@ namespace VirtualAgent
 		internal TextToSpeech.Channel ttsc;
 		public double speechDuration = 0;
 		internal FaceEngine fe;
-		internal GestureEngine ge;
-		internal TorsoEngine toe;
+
+
+		//NOT IMPLEMENTED YET
+		// internal GestureEngine ge;
+		// internal TorsoEngine toe;
 
 		//internal AnimationEngine ae;
 
@@ -206,12 +209,12 @@ namespace VirtualAgent
 
 			fe = new FaceEngine(this);  //agent.AddComponent<FaceEngine>();
 										//fe.Init(this);
+//NOT IMPLEMENTED YET
+			// toe = new TorsoEngine(this); //toe = agent.AddComponent<TorsoEngine>();
+			// 							 //toe.Init(this);
 
-			toe = new TorsoEngine(this); //toe = agent.AddComponent<TorsoEngine>();
-										 //toe.Init(this);
-
-			ge = new GestureEngine(this); //ge = agent.AddComponent<GestureEngine>();
-										  //ge.Init(this);
+			// ge = new GestureEngine(this); //ge = agent.AddComponent<GestureEngine>();
+			// 							  //ge.Init(this);
 		}
 
 		public void Log(string msg)
@@ -606,128 +609,128 @@ namespace VirtualAgent
 									signals.Add(SignalBuilder.Head(scheduler.Sched, id, fe, result, shift, lexeme, target, amount, repetition, synchros));
 								}
 								break;
+			// BODY CASES NOT IMPLEMENTED YET	
+							// case "gesture":
+							// 	if (!UniqueId(signals, id)) break;
+							// 	string[] lex;
+							// 	side = "";
+							// 	target = "";
+							// 	for (int attInd = 0; attInd < reader.AttributeCount; attInd++)
+							// 	{
+							// 		reader.MoveToAttribute(attInd);
+							// 		switch (reader.Name.ToLower())
+							// 		{
+							// 			case "lexeme": //category:lexeme:target
+							// 				lex = reader.Value.Split(':');
+							// 				if (lex.Length == 1)
+							// 					lexeme = lex[0];
+							// 				if (lex.Length == 2)
+							// 				{
+							// 					if (lex[0].Equals("mocap"))
+							// 					{
+							// 						category = lex[0];
+							// 						lexeme = lex[1];
+							// 					}
+							// 					else
+							// 					{
+							// 						lexeme = lex[0];
+							// 						target = lex[1];
+							// 					}
+							// 				}
+							// 				if (lex.Length == 3)
+							// 				{
+							// 					category = lex[0];
+							// 					lexeme = lex[1];
+							// 					target = lex[2];
+							// 				}
+							// 				break;
+							// 			case "mode": side = reader.Value.ToUpper(); break;
+							// 			case "start": synchros.Add(scheduler.Sched.NewSynchro("start", reader.Value)); break;
+							// 			case "ready": synchros.Add(scheduler.Sched.NewSynchro("ready", reader.Value)); break;
+							// 			case "stroke_start": synchros.Add(scheduler.Sched.NewSynchro("stroke_start", reader.Value)); break;
+							// 			case "stroke": synchros.Add(scheduler.Sched.NewSynchro("stroke", reader.Value)); break;
+							// 			case "stroke_end": synchros.Add(scheduler.Sched.NewSynchro("stroke_end", reader.Value)); break;
+							// 			case "relax": synchros.Add(scheduler.Sched.NewSynchro("relax", reader.Value)); break;
+							// 			case "end": synchros.Add(scheduler.Sched.NewSynchro("end", reader.Value)); break;
+							// 		}
+							// 	}
 
-							case "gesture":
-								if (!UniqueId(signals, id)) break;
-								string[] lex;
-								side = "";
-								target = "";
-								for (int attInd = 0; attInd < reader.AttributeCount; attInd++)
-								{
-									reader.MoveToAttribute(attInd);
-									switch (reader.Name.ToLower())
-									{
-										case "lexeme": //category:lexeme:target
-											lex = reader.Value.Split(':');
-											if (lex.Length == 1)
-												lexeme = lex[0];
-											if (lex.Length == 2)
-											{
-												if (lex[0].Equals("mocap"))
-												{
-													category = lex[0];
-													lexeme = lex[1];
-												}
-												else
-												{
-													lexeme = lex[0];
-													target = lex[1];
-												}
-											}
-											if (lex.Length == 3)
-											{
-												category = lex[0];
-												lexeme = lex[1];
-												target = lex[2];
-											}
-											break;
-										case "mode": side = reader.Value.ToUpper(); break;
-										case "start": synchros.Add(scheduler.Sched.NewSynchro("start", reader.Value)); break;
-										case "ready": synchros.Add(scheduler.Sched.NewSynchro("ready", reader.Value)); break;
-										case "stroke_start": synchros.Add(scheduler.Sched.NewSynchro("stroke_start", reader.Value)); break;
-										case "stroke": synchros.Add(scheduler.Sched.NewSynchro("stroke", reader.Value)); break;
-										case "stroke_end": synchros.Add(scheduler.Sched.NewSynchro("stroke_end", reader.Value)); break;
-										case "relax": synchros.Add(scheduler.Sched.NewSynchro("relax", reader.Value)); break;
-										case "end": synchros.Add(scheduler.Sched.NewSynchro("end", reader.Value)); break;
-									}
-								}
+							// 	if (side == "LEFT_HAND") side = "LEFT";
+							// 	else if (side == "RIGHT_HAND") side = "RIGHT";
+							// 	else if (side == "BOTH_HANDS") side = "BOTH";
 
-								if (side == "LEFT_HAND") side = "LEFT";
-								else if (side == "RIGHT_HAND") side = "RIGHT";
-								else if (side == "BOTH_HANDS") side = "BOTH";
+							// 	/****  Add gesture description - First version ****/
+							// 	MocapDescription md = null;
+							// 	GestureDescription gd = null;
+							// 	if (category.Equals("mocap"))
+							// 		mocaps_.TryGetValue(lexeme, out md);
+							// 	else
+							// 	{
+							// 		gestureTable.TryGetValue(lexeme, out gd);
+							// 		if (gd == null)
+							// 			gestureTable.TryGetValue(/*category + ":" +*/ lexeme, out gd);
+							// 	}
+							// 	if (gd != null || md != null)
+							// 	{
+							// 		addSevenSynchros(ref synchros);
+							// 		signals.Add(SignalBuilder.Gesture(scheduler.Sched, id, ge, lexeme, side, gd, synchros, target, md));
+							// 	}
+							// 	else Log("Gesture description " + lexeme + " has not been found");
+							// 	break;
 
-								/****  Add gesture description - First version ****/
-								MocapDescription md = null;
-								GestureDescription gd = null;
-								if (category.Equals("mocap"))
-									mocaps_.TryGetValue(lexeme, out md);
-								else
-								{
-									gestureTable.TryGetValue(lexeme, out gd);
-									if (gd == null)
-										gestureTable.TryGetValue(/*category + ":" +*/ lexeme, out gd);
-								}
-								if (gd != null || md != null)
-								{
-									addSevenSynchros(ref synchros);
-									signals.Add(SignalBuilder.Gesture(scheduler.Sched, id, ge, lexeme, side, gd, synchros, target, md));
-								}
-								else Log("Gesture description " + lexeme + " has not been found");
-								break;
+							// case "pointing":
+							// 	if (!UniqueId(signals, id)) break;
+							// 	side = "LEFT_HAND";
+							// 	for (int attInd = 0; attInd < reader.AttributeCount; attInd++)
+							// 	{
+							// 		reader.MoveToAttribute(attInd);
+							// 		switch (reader.Name.ToLower())
+							// 		{
+							// 			case "mode": side = reader.Value.ToUpper(); break;
+							// 			case "target": target = reader.Value; break;
+							// 			case "start": synchros.Add(scheduler.Sched.NewSynchro("start", reader.Value)); break;
+							// 			case "ready": synchros.Add(scheduler.Sched.NewSynchro("ready", reader.Value)); break;
+							// 			case "stroke_start": synchros.Add(scheduler.Sched.NewSynchro("stroke_start", reader.Value)); break;
+							// 			case "stroke": synchros.Add(scheduler.Sched.NewSynchro("stroke", reader.Value)); break;
+							// 			case "stroke_end": synchros.Add(scheduler.Sched.NewSynchro("stroke_end", reader.Value)); break;
+							// 			case "relax": synchros.Add(scheduler.Sched.NewSynchro("relax", reader.Value)); break;
+							// 			case "end": synchros.Add(scheduler.Sched.NewSynchro("end", reader.Value)); break;
+							// 		}
+							// 	}
 
-							case "pointing":
-								if (!UniqueId(signals, id)) break;
-								side = "LEFT_HAND";
-								for (int attInd = 0; attInd < reader.AttributeCount; attInd++)
-								{
-									reader.MoveToAttribute(attInd);
-									switch (reader.Name.ToLower())
-									{
-										case "mode": side = reader.Value.ToUpper(); break;
-										case "target": target = reader.Value; break;
-										case "start": synchros.Add(scheduler.Sched.NewSynchro("start", reader.Value)); break;
-										case "ready": synchros.Add(scheduler.Sched.NewSynchro("ready", reader.Value)); break;
-										case "stroke_start": synchros.Add(scheduler.Sched.NewSynchro("stroke_start", reader.Value)); break;
-										case "stroke": synchros.Add(scheduler.Sched.NewSynchro("stroke", reader.Value)); break;
-										case "stroke_end": synchros.Add(scheduler.Sched.NewSynchro("stroke_end", reader.Value)); break;
-										case "relax": synchros.Add(scheduler.Sched.NewSynchro("relax", reader.Value)); break;
-										case "end": synchros.Add(scheduler.Sched.NewSynchro("end", reader.Value)); break;
-									}
-								}
+							// 	if (side == "LEFT_HAND") side = "LEFT";
+							// 	else if (side == "RIGHT_HAND") side = "RIGHT";
+							// 	else if (side == "BOTH_HANDS") side = "BOTH";
 
-								if (side == "LEFT_HAND") side = "LEFT";
-								else if (side == "RIGHT_HAND") side = "RIGHT";
-								else if (side == "BOTH_HANDS") side = "BOTH";
+							// 	addSevenSynchros(ref synchros);
 
-								addSevenSynchros(ref synchros);
+							// 	GestureDescription po;
+							// 	gestureTable.TryGetValue("pointing", out po);
+							// 	if (po != null && (side == "RIGHT" || side == "LEFT" || side == "BOTH"))
+							// 		signals.Add(SignalBuilder.Pointing(scheduler.Sched, ge, id, target, side, po, synchros));
+							// 	else if (side == "HEAD")
+							// 		signals.Add(SignalBuilder.Head(scheduler.Sched, id, fe, headShapes_["neutral"], false, "pointing", target, 1, 1, synchros));
+							// 	break;
 
-								GestureDescription po;
-								gestureTable.TryGetValue("pointing", out po);
-								if (po != null && (side == "RIGHT" || side == "LEFT" || side == "BOTH"))
-									signals.Add(SignalBuilder.Pointing(scheduler.Sched, ge, id, target, side, po, synchros));
-								else if (side == "HEAD")
-									signals.Add(SignalBuilder.Head(scheduler.Sched, id, fe, headShapes_["neutral"], false, "pointing", target, 1, 1, synchros));
-								break;
+							// case "locomotion":
+							// 	if (!UniqueId(signals, id)) break;
+							// 	string manner = "WALK";
+							// 	for (int attInd = 0; attInd < reader.AttributeCount; attInd++)
+							// 	{
+							// 		reader.MoveToAttribute(attInd);
+							// 		switch (reader.Name.ToLower())
+							// 		{
+							// 			case "manner": manner = reader.Value.ToUpper(); break;
+							// 			case "target": target = reader.Value.ToUpper(); break; //TODO : to add in bml
+							// 			case "start": synchros.Add(scheduler.Sched.NewSynchro("start", reader.Value)); break;
+							// 			case "end": synchros.Add(scheduler.Sched.NewSynchro("end", reader.Value)); break;
+							// 		}
+							// 	}
+							// 	if (synchros.Find(x => x.Id == "end") == null)
+							// 		synchros.Add(scheduler.Sched.NewSynchro("end", "???"));
 
-							case "locomotion":
-								if (!UniqueId(signals, id)) break;
-								string manner = "WALK";
-								for (int attInd = 0; attInd < reader.AttributeCount; attInd++)
-								{
-									reader.MoveToAttribute(attInd);
-									switch (reader.Name.ToLower())
-									{
-										case "manner": manner = reader.Value.ToUpper(); break;
-										case "target": target = reader.Value.ToUpper(); break; //TODO : to add in bml
-										case "start": synchros.Add(scheduler.Sched.NewSynchro("start", reader.Value)); break;
-										case "end": synchros.Add(scheduler.Sched.NewSynchro("end", reader.Value)); break;
-									}
-								}
-								if (synchros.Find(x => x.Id == "end") == null)
-									synchros.Add(scheduler.Sched.NewSynchro("end", "???"));
-
-								signals.Add(SignalBuilder.Locomotion(scheduler.Sched, id, target, manner, synchros));
-								break;
+							// 	signals.Add(SignalBuilder.Locomotion(scheduler.Sched, id, target, manner, synchros));
+							// 	break;
 
 							case "speech":
 								if (!UniqueId(signals, id)) break;
@@ -767,88 +770,88 @@ namespace VirtualAgent
 									signals.Insert(0, SignalBuilder.Speech(scheduler.Sched, fe, id, sdata, synchros));
 								}
 								break;
+			// BODY CASES NOT IMPLEMENTED YET	
+							// case "postureshift":
+							// case "posture":
+							// 	if (!UniqueId(signals, id)) break;
+							// 	string[] type;
+							// 	string typeStance = "";
+							// 	string facing = "front";
+							// 	for (int attInd = 0; attInd < reader.AttributeCount; attInd++)
+							// 	{
+							// 		reader.MoveToAttribute(attInd);
+							// 		switch (reader.Name.ToLower())
+							// 		{
+							// 			case "start": synchros.Add(scheduler.Sched.NewSynchro("start", reader.Value)); break;
+							// 			case "ready": synchros.Add(scheduler.Sched.NewSynchro("ready", reader.Value)); break;
+							// 			case "relax": synchros.Add(scheduler.Sched.NewSynchro("relax", reader.Value)); break;
+							// 			case "end": synchros.Add(scheduler.Sched.NewSynchro("end", reader.Value)); break;
+							// 		}
+							// 	}
 
-							case "postureshift":
-							case "posture":
-								if (!UniqueId(signals, id)) break;
-								string[] type;
-								string typeStance = "";
-								string facing = "front";
-								for (int attInd = 0; attInd < reader.AttributeCount; attInd++)
-								{
-									reader.MoveToAttribute(attInd);
-									switch (reader.Name.ToLower())
-									{
-										case "start": synchros.Add(scheduler.Sched.NewSynchro("start", reader.Value)); break;
-										case "ready": synchros.Add(scheduler.Sched.NewSynchro("ready", reader.Value)); break;
-										case "relax": synchros.Add(scheduler.Sched.NewSynchro("relax", reader.Value)); break;
-										case "end": synchros.Add(scheduler.Sched.NewSynchro("end", reader.Value)); break;
-									}
-								}
+							// 	while (reader.Read())
+							// 	{
+							// 		if (reader.NodeType == XmlNodeType.EndElement) break;
+							// 		if (reader.NodeType != XmlNodeType.Element) continue;
+							// 		switch (reader.Name.ToLower())
+							// 		{
+							// 			case "stance": //category:stance
+							// 				type = reader.GetAttribute("type").ToLower().Split(':');
+							// 				typeStance = type[type.Length - 1];
+							// 				if (type.Length > 1)
+							// 					category = type[0];
+							// 				break;
+							// 			case "target":
+							// 				target = reader.GetAttribute("name").ToLower();
+							// 				facing = reader.GetAttribute("facing").ToLower();
+							// 				break;
+							// 		}
+							// 	}
 
-								while (reader.Read())
-								{
-									if (reader.NodeType == XmlNodeType.EndElement) break;
-									if (reader.NodeType != XmlNodeType.Element) continue;
-									switch (reader.Name.ToLower())
-									{
-										case "stance": //category:stance
-											type = reader.GetAttribute("type").ToLower().Split(':');
-											typeStance = type[type.Length - 1];
-											if (type.Length > 1)
-												category = type[0];
-											break;
-										case "target":
-											target = reader.GetAttribute("name").ToLower();
-											facing = reader.GetAttribute("facing").ToLower();
-											break;
-									}
-								}
-
-								shift = modality.Equals("postureshift");
-								MocapDescription pmd = null;
-								PostureDescription post = null;
-								if (category.Equals("mocap"))
-									mocaps_.TryGetValue(typeStance, out pmd);
-								else
-									postureShapes_.TryGetValue(typeStance, out post);
-								if (post != null || pmd != null)
-								{
-									addFourSynchros(ref synchros);
-									signals.Add(SignalBuilder.Posture(scheduler.Sched, ge, id, shift, typeStance, category, target, facing, synchros, post, pmd));
+							// 	shift = modality.Equals("postureshift");
+							// 	MocapDescription pmd = null;
+							// 	PostureDescription post = null;
+							// 	if (category.Equals("mocap"))
+							// 		mocaps_.TryGetValue(typeStance, out pmd);
+							// 	else
+							// 		postureShapes_.TryGetValue(typeStance, out post);
+							// 	if (post != null || pmd != null)
+							// 	{
+							// 		addFourSynchros(ref synchros);
+							// 		signals.Add(SignalBuilder.Posture(scheduler.Sched, ge, id, shift, typeStance, category, target, facing, synchros, post, pmd));
 									
-								}
-								else Log("Posture description " + typeStance + " has not been found");
-								break;
+							// 	}
+							// 	else Log("Posture description " + typeStance + " has not been found");
+							// 	break;
 
-							case "torsoshift":
-							case "torso":
-								if (!UniqueId(signals, id)) break;
-								lexeme = "";
-								for (int attInd = 0; attInd < reader.AttributeCount; attInd++)
-								{
-									reader.MoveToAttribute(attInd);
-									switch (reader.Name.ToLower())
-									{
-										case "lexeme": lexeme = reader.Value.ToLower(); break;
-										case "amount":
-											float.TryParse(reader.Value, ns, ci, out amount);
-											break;
-										case "start": synchros.Add(scheduler.Sched.NewSynchro("start", reader.Value)); break;
-										case "ready": synchros.Add(scheduler.Sched.NewSynchro("ready", reader.Value)); break;
-										case "relax": synchros.Add(scheduler.Sched.NewSynchro("relax", reader.Value)); break;
-										case "end": synchros.Add(scheduler.Sched.NewSynchro("end", reader.Value)); break;
-									}
-								}
+							// case "torsoshift":
+							// case "torso":
+							// 	if (!UniqueId(signals, id)) break;
+							// 	lexeme = "";
+							// 	for (int attInd = 0; attInd < reader.AttributeCount; attInd++)
+							// 	{
+							// 		reader.MoveToAttribute(attInd);
+							// 		switch (reader.Name.ToLower())
+							// 		{
+							// 			case "lexeme": lexeme = reader.Value.ToLower(); break;
+							// 			case "amount":
+							// 				float.TryParse(reader.Value, ns, ci, out amount);
+							// 				break;
+							// 			case "start": synchros.Add(scheduler.Sched.NewSynchro("start", reader.Value)); break;
+							// 			case "ready": synchros.Add(scheduler.Sched.NewSynchro("ready", reader.Value)); break;
+							// 			case "relax": synchros.Add(scheduler.Sched.NewSynchro("relax", reader.Value)); break;
+							// 			case "end": synchros.Add(scheduler.Sched.NewSynchro("end", reader.Value)); break;
+							// 		}
+							// 	}
 
-								shift = modality.Equals("torsoshift");
-								TorsoShape tresult;
-								if (torsoShapes_.TryGetValue(lexeme, out tresult))
-								{
-									addFourSynchros(ref synchros);
-									signals.Add(SignalBuilder.Torso(scheduler.Sched, id, shift, lexeme, toe, tresult, amount, synchros));
-								}
-								break;
+							// 	shift = modality.Equals("torsoshift");
+							// 	TorsoShape tresult;
+							// 	if (torsoShapes_.TryGetValue(lexeme, out tresult))
+							// 	{
+							// 		addFourSynchros(ref synchros);
+							// 		signals.Add(SignalBuilder.Torso(scheduler.Sched, id, shift, lexeme, toe, tresult, amount, synchros));
+							// 	}
+							// 	break;
 							default: break;
 						}
 					}
