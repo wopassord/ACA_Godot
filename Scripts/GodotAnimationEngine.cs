@@ -33,6 +33,10 @@ namespace Animation
 		private int leftEyeBoneIdx = -1;
 		private int rightEyeBoneIdx = -1;
 
+		// Logic for automatic eye recognition and traslation of their coordinate systems
+		private Node3D leftEyePivot;
+		private Node3D rightEyePivot;
+
 		
 		// Dictionary Translated to native Godot classes
 		private Dictionary<string, (Godot.Vector3 rot, Godot.Vector3 pos)> headDirections_;
@@ -312,6 +316,144 @@ namespace Animation
 			return (finalRot, finalPos);
 		}
 
+		
+
+		private void SetupModularEyes()
+
+		// Function implemented to solve the following issue:
+
+		// FBX models in the character repository incorrect axes and origins (e.g. eye bones at (0,0,0)). Direct rotation of the eyes results impossible (windshield wiper effect)
+		// Solution: define a BoneAttachment3D Node ("HeadSocket") attached to the head bone in the scene, with two "Marker3D" nodes (left and right eye sockets).
+		// which were manually centered in the eyes. Programmatic rotation (in this case the Vestibulo-Ocular Reflex) is injected directly onto these during _Process() 
+		{
+			//Recuperates the defined sockets
+			leftEyePivot = agentSkeleton.GetNodeOrNull<Node3D>("HeadSocket/LeftEyeSocket");
+			rightEyePivot = agentSkeleton.GetNodeOrNull<Node3D>("HeadSocket/RightEyeSocket");
+
+			if (leftEyePivot == null || rightEyePivot == null)
+			{
+				GD.PrintErr("Eye Sockets missing. Be sure to add the LeftEyeSocket and RightEyeSocket to the agent's HeadSocket.");
+				return;
+			}
+
+			// 2. Escaneamos buscando las mallas originales para SECUESTRARLAS
+			foreach (Node child in agentSkeleton.GetChildren())
+			{
+				if (child is MeshInstance3D meshInstance)
+				{
+					string nameLower = meshInstance.Name.ToString().ToLower();
+					
+					// Ojo Izquierdo
+					if (nameLower.Contains("l_eye") || nameLower.Contains("left_eye"))
+					{
+						HijackEyeMesh(meshInstance, leftEyePivot);
+					}
+					// Ojo Derecho
+					else if (nameLower.Contains("r_eye") || nameLower.Contains("right_eye"))
+					{
+						HijackEyeMesh(meshInstance, rightEyePivot);
+					}
+				}
+			}		
+			
+		// 	// 2. Escaneamos buscando las mallas originales para DIAGNOSTICAR
+		// foreach (Node child in agentSkeleton.GetChildren())
+		// {
+		// 	if (child is MeshInstance3D meshInstance)
+		// 	{
+		// 		string nameLower = meshInstance.Name.ToString().ToLower();
+				
+		// 		if (nameLower.Contains("l_eye") || nameLower.Contains("left_eye"))
+		// 		{
+		// 			RunSpatialDiagnostics(meshInstance, leftEyePivot);
+		// 			// HijackEyeMesh(meshInstance, leftEyePivot); // <-- COMENTADO
+		// 		}
+		// 		else if (nameLower.Contains("r_eye") || nameLower.Contains("right_eye"))
+		// 		{
+		// 			RunSpatialDiagnostics(meshInstance, rightEyePivot);
+		// 			// HijackEyeMesh(meshInstance, rightEyePivot); // <-- COMENTADO
+		// 		}
+		// 	}
+		// }
+		}
+
+	private void HijackEyeMesh(MeshInstance3D originalEye, Node3D targetSocket)
+	{
+		// 1. Guardamos la textura/mesh original
+		Mesh cachedMesh = originalEye.Mesh;
+
+		// 2. Desvinculamos el esqueleto. La malla vuelve a su T-Pose en el origen (0,0,0)
+		originalEye.Skin = null;
+		originalEye.Skeleton = new NodePath("");
+
+		// 3. LA EXTRACCIÓN MATEMÁTICA
+		// Obtenemos la caja que envuelve a los vértices (el globo ocular físico)
+		Aabb bounds = originalEye.GetAabb();
+		// Calculamos el centro exacto de esa caja en el espacio local de la malla
+		Godot.Vector3 geometricCenter = bounds.Position + (bounds.Size / 2.0f);
+
+		// 4. Creamos el plato giratorio dentro del Socket (que ya está en la cabeza)
+		Node3D turntable = new Node3D();
+		turntable.Name = "TurntableFix";
+		targetSocket.AddChild(turntable);
+
+		// 5. Reparentamos
+		originalEye.GetParent().RemoveChild(originalEye);
+		turntable.AddChild(originalEye);
+
+		// 6. EL ANCLAJE ABSOLUTO
+		// Al restarle el centro geométrico, forzamos a que los vértices viajen desde su 
+		// offset original y queden clavados exactamente en el centro del Turntable.
+		originalEye.Position = -geometricCenter;
+		originalEye.Rotation = Godot.Vector3.Zero; // Reseteamos rotaciones espurias
+
+		// Restauramos la visualización
+		originalEye.Mesh = cachedMesh;
+		originalEye.Visible = true; 
+
+		// 7. CORRECCIÓN DEL OJO INVERTIDO
+		// Rotamos el plato 180 grados. Como el plato está ahora en el núcleo exacto 
+		// de la malla, el ojo rotará sobre su propio eje sin desplazarse ni un milímetro.
+		// turntable.Rotation = new Godot.Vector3(0, Mathf.Pi, 0); 
+	}
+
+	private void RunSpatialDiagnostics(MeshInstance3D originalEye, Node3D targetSocket)
+	{
+		GD.Print($"\n=== INICIO DIAGNÓSTICO ESPACIAL: {originalEye.Name} ===");
+
+		// 1. Agente Raíz (Para verificar si el modelo importado tiene escalas raras)
+		Node3D agentRoot = agentSkeleton.GetParent() as Node3D;
+		PrintNodeData("Agent Root", agentRoot);
+
+		// 2. Esqueleto
+		PrintNodeData("Skeleton", agentSkeleton);
+
+		// 3. Socket de Destino (El Marker3D que vos ubicaste)
+		PrintNodeData("Target Socket", targetSocket);
+
+		// 4. Malla Original (ESTADO CRUDO ANTES DEL SECUESTRO)
+		PrintNodeData("Original Eye Mesh", originalEye);
+
+		// 5. El ancla del hueso
+		PrintNodeData("Head Bone Attachment", targetSocket.GetParent() as Node3D);
+
+		GD.Print("==================================================\n");
+	}
+
+	private void PrintNodeData(string label, Node3D node)
+	{
+		if (node == null) 
+		{ 
+			GD.Print($"{label}: NULL"); 
+			return; 
+		}
+		GD.Print($"--- {label} ({node.Name}) ---");
+		GD.Print($"Global Pos: {node.GlobalPosition}");
+		GD.Print($"Local Pos:  {node.Position}");
+		GD.Print($"Global Rot: {node.GlobalRotationDegrees}");
+		GD.Print($"Local Rot:  {node.RotationDegrees}");
+		GD.Print($"Scale:      {node.Scale}");
+	}
 
 
 		public void PlayVoice(TextToSpeech.SpeechData sdata)
@@ -422,8 +564,10 @@ namespace Animation
 
 			InitHeadDirections();
 
-
-
+			if (agentSkeleton != null)
+			{
+				SetupModularEyes();
+			}
 		}
 	
 
@@ -478,18 +622,19 @@ namespace Animation
 					// 3. Apply rotation to the head
 					agentSkeleton.SetBonePoseRotation(headBoneIdx, totalHeadRotation);
 
-					// 4. Vestibulo-Ocular Reflex (Eye Stabilization)
-					// Calculate the exact mathematical opposite of the nod/shake
+					// 4. Vestibulo-Ocular Reflex (Socket System)
+					// Calculamos el contrapeso exacto a la rotación de la cabeza
 					Godot.Quaternion eyeCounterRotation = actionRot.Inverse();
 
-					// Apply the counter-rotation to the eyes so they remain locked forward
-					if (leftEyeBoneIdx != -1)
+					// Inyectamos la rotación pura directamente a nuestros Sockets modulares.
+					// Al ser hijos físicos de HeadSocket, cancelarán exactamente el movimiento de la cabeza.
+					if (leftEyePivot != null)
 					{
-						agentSkeleton.SetBonePoseRotation(leftEyeBoneIdx, eyeCounterRotation);
+						leftEyePivot.Quaternion = eyeCounterRotation;
 					}
-					if (rightEyeBoneIdx != -1)
+					if (rightEyePivot != null)
 					{
-						agentSkeleton.SetBonePoseRotation(rightEyeBoneIdx, eyeCounterRotation);
+						rightEyePivot.Quaternion = eyeCounterRotation;
 					}
 				}
 			}
@@ -500,7 +645,7 @@ namespace Animation
 			// Space bar pressing
 			if (@event is InputEventKey keyEvent && keyEvent.Pressed && !keyEvent.Echo && keyEvent.Keycode == Key.Space)
 			{
-				// Uncomment to test an xml's orders to hear the agent, and see the head blendshapes modifications
+				// // Uncomment to test an xml's orders to hear the agent, and see the head blendshapes modifications
 
 				// // 1. Définir le chemin et lire tout le fichier XML sous forme de chaîne de caractères (string)
 				// string bmlPath = ProjectSettings.GlobalizePath("res://Assets/StreamingAssets/xml/kate.xml");
@@ -515,12 +660,20 @@ namespace Animation
 
 
 
-				// mock BML string to test head movement physics (axis alignment)
 				string testBml = @"
 				<act>
 					<bml>
-						<head lexeme=""NOD"" start=""0.0"" end=""2.0"" amount=""1.0""/>
-					</bml>
+						<speech id=""s1"" start=""0"">
+							<description priority=""2"" type=""application/ssml+xml"">
+								<speak>
+									Bonjour! Mon nom est Elisa.
+								</speak>
+							</description>
+						</speech> 
+
+						<head id=""h1"" lexeme=""tiltl"" amount=""0.5"" start=""0.0"" end=""1.5""/>
+						<head id=""h2"" lexeme=""nod"" amount=""0.7"" start=""2.0"" end=""3.5""/>
+					</bml>;
 				</act>";
 
 				agent_.AddBml(testBml, "Elisa");

@@ -12,6 +12,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://beo64nfft75bj" path="res://Assets/Animations/poser.blend" id="9_ljaqq"]
 [ext_resource type="AnimationLibrary" uid="uid://ctd6vttei80xm" path="res://Assets/Animations/sindiquer.blend" id="10_2isq3"]
 [ext_resource type="AnimationLibrary" uid="uid://dvbx1i8bc0780" path="res://Assets/Animations/tous.blend" id="11_ul0b1"]
+[ext_resource type="Script" uid="uid://ch2ktlo1ixxhc" path="res://Scripts/DebugCamera.cs" id="13_auycd"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_pqbqt"]
 
@@ -22,6 +23,18 @@ sky_material = SubResource("PhysicalSkyMaterial_pqbqt")
 background_mode = 2
 sky = SubResource("Sky_ex3tn")
 ambient_light_source = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3sad"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+metallic_specular = 0.79
+roughness = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_auycd"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+metallic_specular = 0.76
+roughness = 0.1
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1qy40"]
 
@@ -98,8 +111,25 @@ bones/82/rotation = Quaternion(0.03666907, 0.99521327, 0.025281487, 0.086987436)
 bones/83/rotation = Quaternion(-0.10302705, 0.68464166, -0.7131751, -0.10969264)
 bones/85/rotation = Quaternion(-0.0076335426, 0.99996006, 0.0046347086, -0.000546014)
 
+[node name="h_L_trans" parent="Elisa_Unity/GeneralSkeleton" index="4" unique_id=695341498]
+surface_material_override/0 = SubResource("StandardMaterial3D_o3sad")
+
+[node name="h_R_trans" parent="Elisa_Unity/GeneralSkeleton" index="7" unique_id=368088937]
+surface_material_override/0 = SubResource("StandardMaterial3D_auycd")
+
 [node name="H_DDS_HighRes" parent="Elisa_Unity/GeneralSkeleton" index="8" unique_id=419068418]
 blend_shapes/h_expressions.ReyeOpen_h = 1.0
+
+[node name="HeadSocket" type="BoneAttachment3D" parent="Elisa_Unity/GeneralSkeleton" index="10" unique_id=1446830998]
+transform = Transform3D(-0.9628281, -0.053318787, -0.2648007, -0.03202009, 0.995942, -0.08411072, 0.26821077, -0.07250523, -0.96062815, 0.0086917905, 2.3204036, 0.038627684)
+bone_name = "Head"
+bone_idx = 22
+
+[node name="LeftEyeSocket" type="Marker3D" parent="Elisa_Unity/GeneralSkeleton/HeadSocket" unique_id=900520632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.032168373, 0.05354428, 0.063583635)
+
+[node name="RightEyeSocket" type="Marker3D" parent="Elisa_Unity/GeneralSkeleton/HeadSocket" unique_id=1257701139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03168757, 0.052795522, 0.06461585)
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Elisa_Unity" unique_id=1000335420]
 libraries/Animations1 = SubResource("AnimationLibrary_1qy40")
@@ -116,6 +146,7 @@ libraries/tous = ExtResource("11_ul0b1")
 
 [node name="Camera3D" type="Camera3D" parent="Elisa_Unity" unique_id=1138542113]
 transform = Transform3D(-0.9999765, 0, -0.006859162, 0, 1, 0, 0.006859162, 0, -0.9999765, 0, 2.33315, -0.2623086)
+script = ExtResource("13_auycd")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Elisa_Unity" unique_id=1831822306]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2949724, -0.002751708)
