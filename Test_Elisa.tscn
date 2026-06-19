@@ -23,6 +23,7 @@ sky_material = SubResource("PhysicalSkyMaterial_pqbqt")
 background_mode = 2
 sky = SubResource("Sky_ex3tn")
 ambient_light_source = 3
+ambient_light_energy = 1.7
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3sad"]
 transparency = 1
@@ -44,7 +45,7 @@ roughness = 0.1
 environment = SubResource("Environment_l3xht")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1139948180]
-transform = Transform3D(0.9999845, -2.0697213e-05, 0.005567533, -0.0055675716, -0.0037174004, 0.9999776, 0, -0.9999931, -0.0037174579, 0, 0, 0)
+transform = Transform3D(0.9979601, -0.042023946, 0.04805923, -0.063826695, -0.6728071, 0.7370595, 0.0013604724, -0.7386235, -0.6741168, 0, 0, 0)
 
 [node name="Elisa_Unity" parent="." unique_id=2076758102 node_paths=PackedStringArray("faceMesh", "jawMesh", "agentSkeleton", "audioPlayer") instance=ExtResource("1_f2yey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027485073, -1.1920929e-07, 1.3492867)

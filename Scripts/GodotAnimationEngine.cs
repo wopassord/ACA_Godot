@@ -642,50 +642,84 @@ namespace Animation
 
 		public override void _Input(InputEvent @event)
 		{
-			// Space bar pressing
-			if (@event is InputEventKey keyEvent && keyEvent.Pressed && !keyEvent.Echo && keyEvent.Keycode == Key.Space)
+			// Check that it is a key press and not the "echo" of holding the key down
+			if (@event is InputEventKey keyEvent && keyEvent.Pressed && !keyEvent.Echo)
 			{
-				// // Uncomment to test an xml's orders to hear the agent, and see the head blendshapes modifications
+				// Generate a unique ID to prevent BML Scheduler crashes (cannot find start synchro)
+				string uId = Time.GetTicksMsec().ToString();
+				string testBml = "";
 
-				// // 1. Définir le chemin et lire tout le fichier XML sous forme de chaîne de caractères (string)
-				// string bmlPath = ProjectSettings.GlobalizePath("res://Assets/StreamingAssets/xml/kate.xml");
-				// string rawBmlString = System.IO.File.ReadAllText(bmlPath);
-
-				// // 2. Injecter le BML directement dans le cerveau de l'agent.
-				// // Character.cs va automatiquement parser la balise <speech>, appeler Cereproc, 
-				// // récupérer les phonèmes et synchroniser le FaceEngine avec le BmlScheduler.
-				// agent_.AddBml(rawBmlString, "Elisa");
-
-				// GD.Print("BML kate.xml injecté dans le cerveau de l'agent !");
-
-
-
-				string testBml = @"
-				<act>
-					<bml>
-						<speech id=""s1"" start=""0"">
-							<description priority=""2"" type=""application/ssml+xml"">
-								<speak>
-									Bonjour! Mon nom est Elisa.
-								</speak>
-							</description>
-						</speech> 
-
-						<head id=""h1"" lexeme=""tiltl"" amount=""0.5"" start=""0.0"" end=""1.5""/>
-						<head id=""h2"" lexeme=""nod"" amount=""0.7"" start=""2.0"" end=""3.5""/>
-					</bml>;
-				</act>";
-
-				agent_.AddBml(testBml, "Elisa");
-
-				GD.Print("TEST: Forcing Head NOD action...");
-
-
+				if (keyEvent.Keycode == Key.C)
+				{
+					// TRIGGER C: Head rotation (Up and to the left)
+					// We use 'headdirectionshift' to look away, and at 4.0 seconds we send another shift with "none" to return to rest.
+					testBml = $@"
+					<act>
+						<bml id=""bml_{uId}"">
+							<headdirectionshift id=""h_c1_{uId}"" lexeme=""up_left"" amount=""0.8"" start=""0.0""/>
+							<headdirectionshift id=""h_c2_{uId}"" lexeme=""none"" start=""4.0""/>
+						</bml>
+					</act>";
+					
+					GD.Print("TEST C triggered: Head rotation (up_left) with auto-reset");
+					agent_.AddBml(testBml, "Elisa");
+				}
+				else if (keyEvent.Keycode == Key.V)
+				{
+					// TRIGGER V: Big Smile (Blendshapes / FACS)
+					// Added xmlns:ext to prevent XmlReader Exception: 'ext' is an undeclared prefix.
+					testBml = $@"
+					<act>
+						<bml xmlns:ext=""urn:ext"" id=""bml_{uId}"">
+							<face id=""f_v_{uId}"" amount=""1.0"" start=""0.0"" ready=""0.5"" relax=""4.5"" end=""5.0"">
+								<ext:facs au=""12"" side=""BOTH"" amount=""1.0""/> <!-- Lip Corner Puller (Smile) -->
+								<ext:facs au=""6"" side=""BOTH"" amount=""0.5""/>  <!-- Cheek Raiser (Cheekbone realism) -->
+							</face>
+						</bml>
+					</act>";
+					
+					GD.Print("TEST V triggered: Big Smile (AU 12 and 6)");
+					agent_.AddBml(testBml, "Elisa");
+				}
+				else if (keyEvent.Keycode == Key.B)
+				{
+					// TRIGGER B: Vestibulo-Ocular Reflex (Slow head movement, fixed gaze)
+					// A slow 6-second 'shake' will cause the head to turn smoothly from side to side.
+					testBml = $@"
+					<act>
+						<bml id=""bml_{uId}"">
+							<head id=""h_b_{uId}"" lexeme=""shake"" amount=""0.6"" repetition=""2"" start=""0.0"" end=""6.0""/>
+						</bml>
+					</act>";
+					
+					GD.Print("TEST B triggered: Vestibulo-Ocular Reflex (Slow shake)");
+					agent_.AddBml(testBml, "Elisa");
+				}
+				else if (keyEvent.Keycode == Key.N)
+				{
+					// TRIGGER N: Current combination (Speech + Head movements)
+					testBml = $@"
+					<act>
+						<bml id=""bml_{uId}"">
+							<speech id=""s_n_{uId}"" start=""0.0"">
+								<description priority=""2"" type=""application/ssml+xml"">
+									<speak>Bonjour! Mon nom est Elisa.</speak>
+								</description>
+							</speech> 
+							<head id=""h_n1_{uId}"" lexeme=""tiltl"" amount=""0.5"" start=""0.0"" end=""1.5""/>
+							<head id=""h_n2_{uId}"" lexeme=""nod"" amount=""0.7"" start=""2.0"" end=""3.5""/>
+						</bml>
+					</act>";
+					
+					GD.Print("TEST N triggered: Complete combination (Speech + Head)");
+					agent_.AddBml(testBml, "Elisa");
+				}
 			}
 		}
 
 	}
 }
+
 
 
 /////////////// 
