@@ -3,11 +3,11 @@
 id="bml_kate" characterId="Kate" composition="APPEND">
 
   <speech id="s1" start="0">
-    <description priority="2" type="application/ssml+xml">
-      <speak>
-          Bonjour <mark name="tm1"/>! Mon <mark name="tm2"/> nom est Kate <mark name="tm3"/>.
-      </speak>
-    </description>
+	<description priority="2" type="application/ssml+xml">
+	  <speak>
+		  Bonjour <mark name="tm1"/>! Mon <mark name="tm2"/> nom est Kate <mark name="tm3"/>.
+	  </speak>
+	</description>
   </speech>    
 
   <gesture id="ge1" lexeme="hello" stroke="s1:tm1"/>

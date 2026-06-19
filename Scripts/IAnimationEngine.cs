@@ -13,20 +13,24 @@ namespace Animation
 		string GetAssetsPath();
 
 		void LoadHandShapes(string filename);
+		
+		void PlayVoice(TextToSpeech.SpeechData sdata);
+		void StopVoice();
+
+		bool TargetFound(string target);
+		int GetTargetSide(string target, string mode);
+
+
 
 		// Methods to be ignored at the moment as to not break the contract
 
-		// void PlayVoice(TextToSpeech.SpeechData sdata);
+		// PHASE 2 AND 3 METHODS
 		// void PlayMotionCapture(string name);
 		// void StopMotionCapture(string name);
-		// void StopVoice();
-
-		// PHASE 2 AND 3 METHODS
-
-
-		// bool TargetFound(string target);
-		// int GetTargetSide(string target, string mode);
 		// void ChangeStance(string name);
+
+
+
 		// VirtualAgent.Vector3 FindJointPosition(string name);
 
 
